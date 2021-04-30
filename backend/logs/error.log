@@ -1,0 +1,288 @@
+21:20:31.817 ERROR Error Occured in company.controller.delete - ErroCode : 9 - message: 9 FAILED_PRECONDITION: Foreign key `FK_CompanyStocks` constraint violation when deleting or updating referenced key `{String("efc585f3-4098-468a-be6f-6d0797a1cfc4")}` in table `companies`. A row with that key exists in the referencing table `companyStocks`. 
+21:20:31.817 TRACE Error: 9 FAILED_PRECONDITION: Foreign key `FK_CompanyStocks` constraint violation when deleting or updating referenced key `{String("efc585f3-4098-468a-be6f-6d0797a1cfc4")}` in table `companies`. A row with that key exists in the referencing table `companyStocks`.
+    at Object.callErrorFromStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call.js:31:26)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/client.js:176:52)
+    at listener.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call-stream.js:65:35)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/grpc-gcp/build/src/index.js:73:29)
+    at InterceptingListenerImpl.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call-stream.js:60:23)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/client-interceptors.js:336:141)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/client-interceptors.js:299:181)
+    at process.nextTick (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call-stream.js:130:78)
+    at process._tickCallback (internal/process/next_tick.js:61:11) 
+14:56:51.153 ERROR Error Occured in simulation.controller.deleteSimulation - ErroCode : 9 - message: 9 FAILED_PRECONDITION: Wrong number of key parts for simulations. Expected 1 key parts, found 2 key parts. Supplied key: values { string_value: "2a3c6dfd-1505-4a25-9460-ba6e71e5669b" } values { string_value: "34174d6e-4bdf-4678-8a49-2410af8e4594" } 
+14:56:51.153 TRACE Error: 9 FAILED_PRECONDITION: Wrong number of key parts for simulations. Expected 1 key parts, found 2 key parts. Supplied key: values { string_value: "2a3c6dfd-1505-4a25-9460-ba6e71e5669b" } values { string_value: "34174d6e-4bdf-4678-8a49-2410af8e4594" }
+    at Object.callErrorFromStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call.js:31:26)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/client.js:176:52)
+    at listener.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call-stream.js:65:35)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/grpc-gcp/build/src/index.js:73:29)
+    at InterceptingListenerImpl.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call-stream.js:60:23)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/client-interceptors.js:336:141)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/client-interceptors.js:299:181)
+    at process.nextTick (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call-stream.js:130:78)
+    at process._tickCallback (internal/process/next_tick.js:61:11) 
+14:57:30.514 ERROR Error Occured in simulation.controller.deleteSimulation - ErroCode : 9 - message: 9 FAILED_PRECONDITION: Wrong number of key parts for simulations. Expected 1 key parts, found 2 key parts. Supplied key: values { string_value: "efc585f3-4098-468a-be6f-6d0797a1cfc4" } values { string_value: "1ecb3091-1696-45cd-8554-a8acc95264f6" } 
+14:57:30.514 TRACE Error: 9 FAILED_PRECONDITION: Wrong number of key parts for simulations. Expected 1 key parts, found 2 key parts. Supplied key: values { string_value: "efc585f3-4098-468a-be6f-6d0797a1cfc4" } values { string_value: "1ecb3091-1696-45cd-8554-a8acc95264f6" }
+    at Object.callErrorFromStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call.js:31:26)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/client.js:176:52)
+    at listener.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call-stream.js:65:35)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/grpc-gcp/build/src/index.js:73:29)
+    at InterceptingListenerImpl.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call-stream.js:60:23)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/client-interceptors.js:336:141)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/client-interceptors.js:299:181)
+    at process.nextTick (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call-stream.js:130:78)
+    at process._tickCallback (internal/process/next_tick.js:61:11) 
+14:59:22.506 ERROR Error Occured in simulation.controller.deleteSimulation - ErroCode : 5 - message: 5 NOT_FOUND: Instance not found: projects/[GCP-project-id]/instances/omegatrade-instance 
+14:59:22.506 TRACE Error: 5 NOT_FOUND: Instance not found: projects/[GCP-project-id]/instances/omegatrade-instance
+    at Object.callErrorFromStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call.js:31:26)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/client.js:176:52)
+    at listener.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call-stream.js:65:35)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/grpc-gcp/build/src/index.js:73:29)
+    at InterceptingListenerImpl.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call-stream.js:60:23)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/client-interceptors.js:336:141)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/client-interceptors.js:299:181)
+    at process.nextTick (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call-stream.js:130:78)
+    at process._tickCallback (internal/process/next_tick.js:61:11) 
+14:59:30.934 ERROR Error Occured in simulation.controller.deleteSimulation - ErroCode : 5 - message: 5 NOT_FOUND: Instance not found: projects/[GCP-project-id]/instances/omegatrade-instance 
+14:59:30.934 TRACE Error: 5 NOT_FOUND: Instance not found: projects/[GCP-project-id]/instances/omegatrade-instance
+    at Object.callErrorFromStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call.js:31:26)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/client.js:176:52)
+    at listener.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call-stream.js:65:35)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/grpc-gcp/build/src/index.js:73:29)
+    at InterceptingListenerImpl.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call-stream.js:60:23)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/client-interceptors.js:336:141)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/client-interceptors.js:299:181)
+    at process.nextTick (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call-stream.js:130:78)
+    at process._tickCallback (internal/process/next_tick.js:61:11) 
+15:40:03.548 ERROR Error Occured in company.controller.delete - ErroCode : 9 - message: 9 FAILED_PRECONDITION: Foreign key `FK_CompanyStocks` constraint violation when deleting or updating referenced key `{String("e42f5622-d373-49e9-8058-3ec5537e5277")}` in table `companies`. A row with that key exists in the referencing table `companyStocks`. 
+15:40:03.548 TRACE Error: 9 FAILED_PRECONDITION: Foreign key `FK_CompanyStocks` constraint violation when deleting or updating referenced key `{String("e42f5622-d373-49e9-8058-3ec5537e5277")}` in table `companies`. A row with that key exists in the referencing table `companyStocks`.
+    at Object.callErrorFromStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call.js:31:26)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/client.js:176:52)
+    at listener.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call-stream.js:65:35)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/grpc-gcp/build/src/index.js:73:29)
+    at InterceptingListenerImpl.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call-stream.js:60:23)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/client-interceptors.js:336:141)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/client-interceptors.js:299:181)
+    at process.nextTick (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call-stream.js:130:78)
+    at process._tickCallback (internal/process/next_tick.js:61:11) 
+15:50:14.960 ERROR Error Occured in simulation.controller.deleteSimulation - ErroCode : undefined - message: database.table(...).deleteById is not a function 
+15:50:14.961 TRACE TypeError: database.table(...).deleteById is not a function
+    at Function.Simulation.deleteById (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/app/models/simulation.model.js:55:50)
+    at exports.deleteSimulation (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/app/controller/simulation.controller.js:56:30)
+    at Layer.handle [as handle_request] (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/route.js:137:13)
+    at jwt.verify (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/app/middlewares/jwt-auth.middleware.js:20:28)
+    at /Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/jsonwebtoken/verify.js:223:12
+    at getSecret (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/jsonwebtoken/verify.js:90:14)
+    at Object.module.exports [as verify] (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/jsonwebtoken/verify.js:94:10)
+    at validateToken (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/app/middlewares/jwt-auth.middleware.js:14:17)
+    at Layer.handle [as handle_request] (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/layer.js:95:5) 
+15:50:43.861 ERROR Error Occured in simulation.controller.deleteSimulation - ErroCode : undefined - message: database.table(...).deleteById is not a function 
+15:50:43.861 TRACE TypeError: database.table(...).deleteById is not a function
+    at Function.Simulation.deleteById (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/app/models/simulation.model.js:55:50)
+    at exports.deleteSimulation (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/app/controller/simulation.controller.js:56:30)
+    at Layer.handle [as handle_request] (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/route.js:137:13)
+    at jwt.verify (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/app/middlewares/jwt-auth.middleware.js:20:28)
+    at /Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/jsonwebtoken/verify.js:223:12
+    at getSecret (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/jsonwebtoken/verify.js:90:14)
+    at Object.module.exports [as verify] (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/jsonwebtoken/verify.js:94:10)
+    at validateToken (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/app/middlewares/jwt-auth.middleware.js:14:17)
+    at Layer.handle [as handle_request] (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/layer.js:95:5) 
+17:22:58.454 ERROR Error Occured in simulation.controller.deleteSimulation - ErroCode : 9 - message: 9 FAILED_PRECONDITION: Wrong number of key parts for companyStocks. Expected 2 key parts, found 1 key parts. Supplied key: values { string_value: "f5c19958-e144-4a2e-acba-3be6ccd60261" } 
+17:22:58.454 TRACE Error: 9 FAILED_PRECONDITION: Wrong number of key parts for companyStocks. Expected 2 key parts, found 1 key parts. Supplied key: values { string_value: "f5c19958-e144-4a2e-acba-3be6ccd60261" }
+    at Object.callErrorFromStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call.js:31:26)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/client.js:176:52)
+    at listener.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call-stream.js:65:35)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/grpc-gcp/build/src/index.js:73:29)
+    at InterceptingListenerImpl.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call-stream.js:60:23)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/client-interceptors.js:336:141)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/client-interceptors.js:299:181)
+    at process.nextTick (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call-stream.js:130:78)
+    at process._tickCallback (internal/process/next_tick.js:61:11) 
+17:23:01.551 ERROR Error Occured in simulation.controller.deleteSimulation - ErroCode : 9 - message: 9 FAILED_PRECONDITION: Wrong number of key parts for companyStocks. Expected 2 key parts, found 1 key parts. Supplied key: values { string_value: "f5c19958-e144-4a2e-acba-3be6ccd60261" } 
+17:23:01.551 TRACE Error: 9 FAILED_PRECONDITION: Wrong number of key parts for companyStocks. Expected 2 key parts, found 1 key parts. Supplied key: values { string_value: "f5c19958-e144-4a2e-acba-3be6ccd60261" }
+    at Object.callErrorFromStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call.js:31:26)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/client.js:176:52)
+    at listener.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call-stream.js:65:35)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/grpc-gcp/build/src/index.js:73:29)
+    at InterceptingListenerImpl.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call-stream.js:60:23)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/client-interceptors.js:336:141)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/client-interceptors.js:299:181)
+    at process.nextTick (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call-stream.js:130:78)
+    at process._tickCallback (internal/process/next_tick.js:61:11) 
+17:23:42.964 ERROR Error Occured in simulation.controller.deleteSimulation - ErroCode : 9 - message: 9 FAILED_PRECONDITION: Wrong number of key parts for companyStocks. Expected 2 key parts, found 1 key parts. Supplied key: values { string_value: "f5c19958-e144-4a2e-acba-3be6ccd60261" } 
+17:23:42.964 TRACE Error: 9 FAILED_PRECONDITION: Wrong number of key parts for companyStocks. Expected 2 key parts, found 1 key parts. Supplied key: values { string_value: "f5c19958-e144-4a2e-acba-3be6ccd60261" }
+    at Object.callErrorFromStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call.js:31:26)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/client.js:176:52)
+    at listener.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call-stream.js:65:35)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/grpc-gcp/build/src/index.js:73:29)
+    at InterceptingListenerImpl.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call-stream.js:60:23)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/client-interceptors.js:336:141)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/client-interceptors.js:299:181)
+    at process.nextTick (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call-stream.js:130:78)
+    at process._tickCallback (internal/process/next_tick.js:61:11) 
+22:19:27.117 ERROR Error Occured in user.controller.getToken - ErroCode : 5 - message: 5 NOT_FOUND: Column not found in table users: authToken 
+22:19:27.118 TRACE Error: 5 NOT_FOUND: Column not found in table users: authToken
+    at Object.callErrorFromStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call.js:31:26)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/client.js:176:52)
+    at listener.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call-stream.js:65:35)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/grpc-gcp/build/src/index.js:73:29)
+    at InterceptingListenerImpl.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call-stream.js:60:23)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/client-interceptors.js:336:141)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/client-interceptors.js:299:181)
+    at process.nextTick (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call-stream.js:130:78)
+    at process._tickCallback (internal/process/next_tick.js:61:11) 
+09:22:07.506 ERROR Error Occured in user.controller.changePassword - ErroCode : undefined - message: Value of type undefined not recognized. 
+09:22:07.506 TRACE Error: Value of type undefined not recognized.
+    at ObjectToStructConverter.encodeValue_ (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@google-cloud/spanner/build/src/common-grpc/service.js:249:23)
+    at Function.encodeValue_ (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@google-cloud/spanner/build/src/common-grpc/service.js:575:58)
+    at Object.encode (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@google-cloud/spanner/build/src/codec.js:315:34)
+    at Object.keys.forEach.param (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@google-cloud/spanner/build/src/transaction.js:853:47)
+    at Array.forEach (<anonymous>)
+    at Function.encodeParams (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@google-cloud/spanner/build/src/transaction.js:848:41)
+    at sanitizeRequest (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@google-cloud/spanner/build/src/transaction.js:727:53)
+    at makeRequest (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@google-cloud/spanner/build/src/transaction.js:751:21)
+    at PartialResultStream.makeRequest (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@google-cloud/spanner/build/src/partial-result-stream.js:287:29)
+    at Object.onceWrapper (events.js:286:20) 
+09:22:37.175 ERROR Error Occured in user.controller.changePassword - ErroCode : undefined - message: Value of type undefined not recognized. 
+09:22:37.175 TRACE Error: Value of type undefined not recognized.
+    at ObjectToStructConverter.encodeValue_ (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@google-cloud/spanner/build/src/common-grpc/service.js:249:23)
+    at Function.encodeValue_ (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@google-cloud/spanner/build/src/common-grpc/service.js:575:58)
+    at Object.encode (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@google-cloud/spanner/build/src/codec.js:315:34)
+    at Object.keys.forEach.param (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@google-cloud/spanner/build/src/transaction.js:853:47)
+    at Array.forEach (<anonymous>)
+    at Function.encodeParams (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@google-cloud/spanner/build/src/transaction.js:848:41)
+    at sanitizeRequest (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@google-cloud/spanner/build/src/transaction.js:727:53)
+    at makeRequest (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@google-cloud/spanner/build/src/transaction.js:751:21)
+    at PartialResultStream.makeRequest (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@google-cloud/spanner/build/src/partial-result-stream.js:287:29)
+    at Object.onceWrapper (events.js:286:20) 
+09:27:39.088 ERROR Error Occured in user.controller.changePassword - ErroCode : undefined - message: Value of type undefined not recognized. 
+09:27:39.088 TRACE Error: Value of type undefined not recognized.
+    at ObjectToStructConverter.encodeValue_ (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@google-cloud/spanner/build/src/common-grpc/service.js:249:23)
+    at Function.encodeValue_ (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@google-cloud/spanner/build/src/common-grpc/service.js:575:58)
+    at Object.encode (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@google-cloud/spanner/build/src/codec.js:315:34)
+    at Object.keys.forEach.param (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@google-cloud/spanner/build/src/transaction.js:853:47)
+    at Array.forEach (<anonymous>)
+    at Function.encodeParams (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@google-cloud/spanner/build/src/transaction.js:848:41)
+    at sanitizeRequest (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@google-cloud/spanner/build/src/transaction.js:727:53)
+    at makeRequest (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@google-cloud/spanner/build/src/transaction.js:751:21)
+    at PartialResultStream.makeRequest (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@google-cloud/spanner/build/src/partial-result-stream.js:287:29)
+    at Object.onceWrapper (events.js:286:20) 
+09:27:50.059 ERROR Error Occured in user.controller.changePassword - ErroCode : undefined - message: Value of type undefined not recognized. 
+09:27:50.059 TRACE Error: Value of type undefined not recognized.
+    at ObjectToStructConverter.encodeValue_ (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@google-cloud/spanner/build/src/common-grpc/service.js:249:23)
+    at Function.encodeValue_ (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@google-cloud/spanner/build/src/common-grpc/service.js:575:58)
+    at Object.encode (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@google-cloud/spanner/build/src/codec.js:315:34)
+    at Object.keys.forEach.param (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@google-cloud/spanner/build/src/transaction.js:853:47)
+    at Array.forEach (<anonymous>)
+    at Function.encodeParams (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@google-cloud/spanner/build/src/transaction.js:848:41)
+    at sanitizeRequest (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@google-cloud/spanner/build/src/transaction.js:727:53)
+    at makeRequest (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@google-cloud/spanner/build/src/transaction.js:751:21)
+    at PartialResultStream.makeRequest (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@google-cloud/spanner/build/src/partial-result-stream.js:287:29)
+    at Object.onceWrapper (events.js:286:20) 
+10:52:36.438 ERROR Error Occured in user.controller.changePassword - ErroCode : undefined - message: database.table(...).read is not a function or its return value is not iterable 
+10:52:36.438 TRACE TypeError: database.table(...).read is not a function or its return value is not iterable
+    at Function.User.findById (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/app/models/user.model.js:25:42)
+    at exports.changePassword (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/app/controller/user.controller.js:124:35)
+    at Layer.handle [as handle_request] (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/index.js:174:3) 
+10:52:41.425 ERROR Error Occured in user.controller.changePassword - ErroCode : undefined - message: database.table(...).read is not a function or its return value is not iterable 
+10:52:41.425 TRACE TypeError: database.table(...).read is not a function or its return value is not iterable
+    at Function.User.findById (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/app/models/user.model.js:25:42)
+    at exports.changePassword (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/app/controller/user.controller.js:124:35)
+    at Layer.handle [as handle_request] (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/index.js:174:3) 
+10:52:53.065 ERROR Error Occured in user.controller.changePassword - ErroCode : undefined - message: database.table(...).read is not a function or its return value is not iterable 
+10:52:53.065 TRACE TypeError: database.table(...).read is not a function or its return value is not iterable
+    at Function.User.findById (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/app/models/user.model.js:25:42)
+    at exports.changePassword (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/app/controller/user.controller.js:124:35)
+    at Layer.handle [as handle_request] (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/index.js:174:3) 
+10:53:07.630 ERROR Error Occured in user.controller.changePassword - ErroCode : undefined - message: database.table(...).read is not a function or its return value is not iterable 
+10:53:07.630 TRACE TypeError: database.table(...).read is not a function or its return value is not iterable
+    at Function.User.findById (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/app/models/user.model.js:25:42)
+    at exports.changePassword (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/app/controller/user.controller.js:124:35)
+    at Layer.handle [as handle_request] (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/index.js:174:3) 
+10:53:22.219 ERROR Error Occured in user.controller.changePassword - ErroCode : undefined - message: database.table(...).read is not a function or its return value is not iterable 
+10:53:22.219 TRACE TypeError: database.table(...).read is not a function or its return value is not iterable
+    at Function.User.findById (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/app/models/user.model.js:25:42)
+    at exports.changePassword (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/app/controller/user.controller.js:124:35)
+    at Layer.handle [as handle_request] (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/index.js:174:3) 
+10:53:47.060 ERROR Error Occured in user.controller.changePassword - ErroCode : undefined - message: database.table(...).read is not a function or its return value is not iterable 
+10:53:47.060 TRACE TypeError: database.table(...).read is not a function or its return value is not iterable
+    at Function.User.findById (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/app/models/user.model.js:25:42)
+    at exports.changePassword (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/app/controller/user.controller.js:124:33)
+    at Layer.handle [as handle_request] (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/index.js:174:3) 
+10:55:02.230 ERROR Error Occured in user.controller.changePassword - ErroCode : undefined - message: database.table(...).read is not a function or its return value is not iterable 
+10:55:02.230 TRACE TypeError: database.table(...).read is not a function or its return value is not iterable
+    at Function.User.findById (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/app/models/user.model.js:25:42)
+    at exports.changePassword (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/app/controller/user.controller.js:124:35)
+    at Layer.handle [as handle_request] (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/express/lib/router/index.js:174:3) 
+10:55:26.018 ERROR Error Occured in user.controller.changePassword - ErroCode : 5 - message: 5 NOT_FOUND: Column not found in table users: 0 
+10:55:26.019 TRACE Error: 5 NOT_FOUND: Column not found in table users: 0
+    at Object.callErrorFromStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call.js:31:26)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/client.js:176:52)
+    at listener.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call-stream.js:65:35)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/grpc-gcp/build/src/index.js:73:29)
+    at InterceptingListenerImpl.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call-stream.js:60:23)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/client-interceptors.js:336:141)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/client-interceptors.js:299:181)
+    at process.nextTick (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call-stream.js:130:78)
+    at process._tickCallback (internal/process/next_tick.js:61:11) 
+18:49:02.662 ERROR Error Occured in user.controller.googleSignIn - ErroCode : 9 - message: 9 FAILED_PRECONDITION: A new row in table users does not specify a non-null value for NOT NULL column: forceChangePassword 
+18:49:02.662 TRACE Error: 9 FAILED_PRECONDITION: A new row in table users does not specify a non-null value for NOT NULL column: forceChangePassword
+    at Object.callErrorFromStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call.js:31:26)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/client.js:176:52)
+    at listener.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call-stream.js:65:35)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/grpc-gcp/build/src/index.js:73:29)
+    at InterceptingListenerImpl.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call-stream.js:60:23)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/client-interceptors.js:336:141)
+    at Object.onReceiveStatus (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/client-interceptors.js:299:181)
+    at process.nextTick (/Users/kartikbhalla/spanner-terraform-example/omegatrade-app/backend/node_modules/@grpc/grpc-js/build/src/call-stream.js:130:78)
+    at process._tickCallback (internal/process/next_tick.js:61:11) 
