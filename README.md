@@ -33,7 +33,6 @@ In your development environment, you might want to switch between using a local 
 
 
 ```
-
 gcloud config configurations activate default
 
 # Or switch to the emulator configuration
@@ -41,7 +40,6 @@ gcloud config configurations activate emulator
 
 # verify it is actually connected to the emulator
 gcloud config list
-
 ```
 
 Let’s create an instance, database and some tables on the local emulator. 
@@ -49,16 +47,13 @@ Let’s create an instance, database and some tables on the local emulator.
 #### Create an instance in the emulator 
 
 ```
-
 gcloud spanner instances create omegatrade-instance --config=emulator-config \
 --description="OmegaTrade Instance - Cloud Spanner Emulator" --nodes=3
-
 ```
 
 #### Create a database
 
 ```
-
 gcloud spanner databases create omegatrade-db --instance omegatrade-instance
 
 ```
@@ -66,7 +61,6 @@ gcloud spanner databases create omegatrade-db --instance omegatrade-instance
 #### Create Tables 
 
 ```
-
 gcloud spanner databases ddl update omegatrade-db --instance omegatrade-instance --ddl \
 "CREATE TABLE users 
 (userId STRING(36) NOT NULL,
@@ -77,7 +71,6 @@ photoUrl STRING(250),
 provider STRING(20),
 forceChangePassword BOOL) PRIMARY KEY(userId);
 CREATE UNIQUE NULL_FILTERED INDEX usersByBusinessEmail ON users (businessEmail);"
-
 
 gcloud spanner databases ddl update omegatrade-db --instance omegatrade-instance --ddl  \
 "CREATE TABLE companies 
@@ -113,21 +106,17 @@ status STRING(36),
 createdAt TIMESTAMP NOT NULL OPTIONS (allow_commit_timestamp=true),
 CONSTRAINT FK_CompanySimulation FOREIGN KEY (companyId) REFERENCES companies (companyId)
 ) PRIMARY KEY(sId);"
-
 ```
 
 Verify if these tables were successfully created by querying **INFORMATION_SCHEMA** in the emulator instance.
 
 ```
-
 gcloud spanner databases execute-sql omegatrade-db  --instance=omegatrade-instance  --sql='SELECT * FROM information_schema.tables WHERE table_schema <> "INFORMATION_SCHEMA"'
-
 ```
 
 Now the emulator is up and running, let’s clone this repo and run the backend service of OmegaTrade with the emulator. 
 
 ```
-
 cd backend
 
 #Install Dependencies
@@ -135,19 +124,16 @@ npm install
 
 #create logs folder and assign permissions
 mkdir logs && sudo chmod 777 logs  
-
 ```
 
 Verify .env file and ensure the **project id, instance name and database** name match the once we created above. 
 
 ```
-
 PROJECTID = test-project
 INSTANCE = omegatrade-instance
 DATABASE = omegatrade-db
 JWT_KEY = w54p3Y?4dj%8Xqa2jjVC84narhe5Pk
 EXPIRE_IN = 2d
-
 ```
 
 ```
@@ -165,7 +151,6 @@ cd frontend
 
 #Install Dependencies
 npm install 
-
 ```
 
 #### Creating Google Oauth Credentials
@@ -183,16 +168,13 @@ The client id looks like this 142706365772-ol2a8hcqs1d3rrgjgvxxxxxxxxdqpog8.apps
 Now lets configure client id and backend API url.
 
 ```
-
 cd src/environments
 vi environment.ts
-
 ```
 
 Change the **base URL** according to the **backend URL** (keep the /api/v1 as it is) and clientId.
 
 ```
-
 export const environment = {
   production: false,
   name: "dev",
@@ -201,8 +183,6 @@ export const environment = {
   // change clientId to actual value you have received from Oauth console
   clientId: "142706365772-ol2a8hcqs1d3rrgjgvxxxxxxxxdqpog8.apps.googleusercontent.com"
 };
-
-
 ```
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
