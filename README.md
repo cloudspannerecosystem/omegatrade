@@ -170,17 +170,13 @@ npm install
 
 #### Creating Google Oauth Credentials
 
-You can follow the [official guide](https://support.google.com/cloud/answer/6158849?hl=en#zippy=) for setting up Oauth.
-
-```
-
 Step 1: Go to the [Google API Console Credentials](https://console.developers.google.com/apis/credentials). Click on Create Credentials and choose OAuth client ID. 
 
 step 2: In application type, choose Web application and name whatever you like. Click create to continue.   
 
 step 3: Note down your client ID as you need to configure this in the frontend. 
 
-```
+You can also follow the [official guide](https://support.google.com/cloud/answer/6158849?hl=en#zippy=) for setting up Oauth.
 
 The client id looks like this 142706365772-ol2a8hcqs1d3rrgjgvxxxxxxxxdqpog8.apps.googleusercontent.com
 
