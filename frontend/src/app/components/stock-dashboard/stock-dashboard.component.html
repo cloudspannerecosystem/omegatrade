@@ -1,0 +1,21 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="spinner" *ngIf="loader">
+    <mat-spinner></mat-spinner>
+</div>
+<main class="stock-dashboard">
+    <div class="example-container">
+        <mat-form-field appearance="standard">
+            <mat-label>Select</mat-label>
+            <mat-select (selectionChange)="getStockData()" [(ngModel)]="selectedCompany">
+                <mat-option *ngFor="let company of this.companies" [value]="company.companyId">{{ company.companyName }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div [chart]="stock" style="height: 600px;"></div>
+        </div>
+    </div>
+</main>
