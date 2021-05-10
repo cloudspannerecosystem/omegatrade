@@ -58,7 +58,7 @@ spec:
    }
 }
     environment {
-        JenkinsDockerGCRSecret = credentials('jenkins-docker-gcr-secret')
+        GCP_PROJECT_ID = "searce-academy"
     }
     stages {
         stage ('git clone - main') {
@@ -98,7 +98,7 @@ spec:
                         sh 'pwd'
                         sh """
                         #!/busybox/sh 
-                        /kaniko/executor --dockerfile dockerfile --context `pwd`/ --verbosity debug --insecure --skip-tls-verify --destination gcr.io/searce-academy/omega-trade/dev/backend:$BUILD_NUMBER --destination gcr.io/searce-academy/omega-trade/dev/backend:latest
+                        /kaniko/executor --dockerfile dockerfile.local.emulator --context `pwd`/ --verbosity debug --insecure --skip-tls-verify --destination gcr.io/${GCP_PROJECT_ID}/omega-trade/dev/backend:$BUILD_NUMBER --destination gcr.io/${GCP_PROJECT_ID}/omega-trade/dev/backend:latest
                         """
                     }
                 }
@@ -115,12 +115,13 @@ spec:
                         sh 'pwd'
                         sh """
                         #!/busybox/sh 
-                        /kaniko/executor --dockerfile dockerfile --context `pwd`/ --verbosity debug --insecure --skip-tls-verify --destination gcr.io/searce-academy/omega-trade/prod/backend:$BUILD_NUMBER --destination gcr.io/searce-academy/omega-trade/prod/backend:latest
+                        /kaniko/executor --dockerfile dockerfile.prod --context `pwd`/ --verbosity debug --insecure --skip-tls-verify --destination gcr.io/${GCP_PROJECT_ID}/omega-trade/prod/backend:$BUILD_NUMBER --destination gcr.io/${GCP_PROJECT_ID}/omega-trade/prod/backend:latest
                         """
                     }  
                 }
             }
         }
+        
         stage ('deploy to cloud run - main') {
             when {
                 branch 'main'
@@ -129,7 +130,7 @@ spec:
                 container('gcloud'){
                     sh 'kubectl version'
                     sh 'gcloud auth activate-service-account --key-file=/secret/kaniko-secret.json'
-                    sh 'gcloud run deploy omegatrade-backend-dev-jenkins --image=gcr.io/searce-academy/omega-trade/dev/backend:$BUILD_NUMBER --platform=managed --region=us-west1 --allow-unauthenticated --project=searce-academy'
+                    sh 'gcloud run deploy omegatrade-backend-dev-jenkins --image=gcr.io/${GCP_PROJECT_ID}/omega-trade/dev/backend:$BUILD_NUMBER --platform=managed --region=us-west1 --allow-unauthenticated --project=${GCP_PROJECT_ID} --port 9020'
                 }
             }
         }
@@ -142,7 +143,7 @@ spec:
                 container('gcloud'){
                     sh 'kubectl version'
                     sh 'gcloud auth activate-service-account --key-file=/secret/kaniko-secret.json'
-                    sh 'gcloud run deploy omegatrade-backend-prod-jenkins --image=gcr.io/searce-academy/omega-trade/prod/backend:$BUILD_NUMBER --platform=managed --region=us-west1 --allow-unauthenticated --project=searce-academy --set-env-vars=PROJECTID=searce-academy --set-env-vars=INSTANCE=spanner_id --set-env-vars=DATABASE=spanner_database --set-env-vars=JWT_SECRET=abc123 --set-env-vars=EXPIRE_IN=2d'
+                    sh 'gcloud run deploy omegatrade-backend-prod-jenkins --image=gcr.io/${GCP_PROJECT_ID}/omega-trade/prod/backend:$BUILD_NUMBER --platform=managed --region=us-west1 --allow-unauthenticated --project=${GCP_PROJECT_ID} --port 9020 --set-env-vars=PROJECTID=${GCP_PROJECT_ID} --set-env-vars=INSTANCE=spanner_id --set-env-vars=DATABASE=spanner_database --set-env-vars=JWT_SECRET=abc123 --set-env-vars=EXPIRE_IN=2d'
                 }
             }
         }
