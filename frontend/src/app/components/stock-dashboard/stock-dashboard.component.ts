@@ -89,7 +89,7 @@ export class StockDashboardComponent implements OnInit, OnDestroy {
                 this.areaChartData = {
                   type: 'AreaChart',
                   data: [
-                    [new Date(), 0],
+                    [],
                   ],
                 };
               }
@@ -214,6 +214,16 @@ export class StockDashboardComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.clearAllTimeOuts();
+  }
+
+  /**
+   * Function to clear the chart on Error.
+   * @param chart 
+   */
+   onError(chart){
+    if(chart)
+      chart.clearChart();
+    return;  
   }
 }
 
