@@ -64,7 +64,7 @@ export class StockDashboardComponent implements OnInit, OnDestroy {
    * 
    *  @returns  {null}
    */
-  public getStockData() {
+  getStockData() {
     if (this.selectedCompany) {
       this.loader = true;
       this.restService.getData(`companies/dashboard/${this.selectedCompany}`)
@@ -130,6 +130,10 @@ export class StockDashboardComponent implements OnInit, OnDestroy {
       data: chartData,
       columnNames: ["Date", company.companyName],
       options: {
+        animation: {
+          duration: 500,
+          easing: 'out'
+        },
         legend: {
           position: 'left'
         },
