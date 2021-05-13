@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit,AfterViewInit {
    * Allow User to change password if user logged in for first time
    */
   ngAfterViewInit() {
-    if(this.user && this.user.forceChangePassword === true){
+    if(this.user && this.user.forceChangePassword === true && (!this.dialog.openDialogs || !this.dialog.openDialogs.length)){
       this.changePassword(true);
     }
   }

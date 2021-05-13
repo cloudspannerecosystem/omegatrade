@@ -65,7 +65,6 @@ export class StockDashboardComponent implements OnInit, OnDestroy {
   getStockData() {
     if (this.selectedCompany) {
       this.loader = true;
-      console.log(this.areaChartData)
       this.restService.getData(`companies/dashboard/${this.selectedCompany}`)
         .pipe(take(1))
         .subscribe(
@@ -150,7 +149,6 @@ export class StockDashboardComponent implements OnInit, OnDestroy {
       },
       height: 600
     };
-    console.log(this.areaChartData.data);
     if (company && company.status === 'PROCESSING') {
       this.updateDashboard();
     }
