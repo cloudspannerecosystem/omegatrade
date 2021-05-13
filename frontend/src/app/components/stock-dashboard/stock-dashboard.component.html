@@ -14,8 +14,10 @@
         </mat-form-field>
     </div>
     <div class="row">
-        <div class="col-12">
-            <div [chart]="stock" style="height: 600px;"></div>
+        <div class="col-12" *ngIf="areaChartData" #stockChart>
+            <google-chart  #chart [type]="areaChartData.type" [data]="areaChartData.data" [columns]="areaChartData.columnNames"
+                [options]="areaChartData.options" [width]="stockChart.offsetWidth" [height]="areaChartData.height">
+            </google-chart>
         </div>
     </div>
 </main>
