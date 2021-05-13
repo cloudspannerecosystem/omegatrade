@@ -66,6 +66,10 @@ export class StockDashboardComponent implements OnInit, OnDestroy {
    */
   getStockData() {
     if (this.selectedCompany) {
+      // clearing the chart to avoid showing previously loaded chart.
+      if(this.chart && this.chart.chartWrapper){
+        this.chart.chartWrapper.getChart().clearChart();
+      }
       this.loader = true;
       this.restService.getData(`companies/dashboard/${this.selectedCompany}`)
         .pipe(take(1))
@@ -87,9 +91,6 @@ export class StockDashboardComponent implements OnInit, OnDestroy {
                   this.getStockData();
                 }, 5000);
                 this.timerIds.push(id);
-              }else{
-                if(this.chart && this.chart.chartWrapper)
-                  this.chart.chartWrapper.getChart().clearChart();
               }
               this.loader = false;
             }
