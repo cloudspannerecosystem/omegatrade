@@ -1,9 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy ,ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RestService } from '../../services/rest.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { take } from 'rxjs/operators';
 import { SnackBarService } from '../../services/snackbar.service';
+import { GoogleChartComponent } from 'angular-google-charts';
 @Component({
   selector: 'app-stock-dashboard',
   templateUrl: './stock-dashboard.component.html',
@@ -17,7 +18,8 @@ export class StockDashboardComponent implements OnInit, OnDestroy {
   loader: boolean = false;
   timerIds = [];
   areaChartData:any;
-
+  @ViewChild(GoogleChartComponent)
+  public readonly chart: GoogleChartComponent;
   constructor(private snackBarService: SnackBarService, private router: ActivatedRoute, private _snackBar: MatSnackBar, private restService: RestService) {
   }
 
@@ -62,7 +64,7 @@ export class StockDashboardComponent implements OnInit, OnDestroy {
    * 
    *  @returns  {null}
    */
-  getStockData() {
+  public getStockData() {
     if (this.selectedCompany) {
       this.loader = true;
       this.restService.getData(`companies/dashboard/${this.selectedCompany}`)
@@ -86,12 +88,8 @@ export class StockDashboardComponent implements OnInit, OnDestroy {
                 }, 5000);
                 this.timerIds.push(id);
               }else{
-                this.areaChartData = {
-                  type: 'AreaChart',
-                  data: [
-                    [],
-                  ],
-                };
+                if(this.chart && this.chart.chartWrapper)
+                  this.chart.chartWrapper.getChart().clearChart();
               }
               this.loader = false;
             }
@@ -139,9 +137,9 @@ export class StockDashboardComponent implements OnInit, OnDestroy {
         chartArea:{width:"85%",height:"75%"},
         hAxis: {
           title: 'Date',
-          direction: -1,
+          direction: 1,
           slantedText: true,
-          slantedTextAngle: 90,
+          slantedTextAngle: 45,
         },
         vAxis: {
           title: 'Stock Price'

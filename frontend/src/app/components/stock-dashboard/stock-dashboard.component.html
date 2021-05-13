@@ -15,7 +15,7 @@
     </div>
     <div class="row">
         <div class="col-12" *ngIf="areaChartData" #stockChart>
-            <google-chart  #chart [type]="areaChartData.type" [data]="areaChartData.data" [columns]="areaChartData.columnNames"
+            <google-chart #chart [type]="areaChartData.type" [data]="areaChartData.data" [columns]="areaChartData.columnNames"
                 [options]="areaChartData.options" [width]="stockChart.offsetWidth" [height]="areaChartData.height" (error)="onError($event)">
             </google-chart>
         </div>
