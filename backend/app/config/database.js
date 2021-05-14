@@ -7,5 +7,5 @@ const instance = spanner.instance(process.env.INSTANCE);
 // Environment variable assigned here
 const databaseId = process.env.DATABASE;
 // Initialize database
-const database = instance.database(databaseId,{});
+const database = instance.database(databaseId);
 module.exports = database;
