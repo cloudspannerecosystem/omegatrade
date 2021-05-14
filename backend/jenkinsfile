@@ -59,6 +59,7 @@ spec:
 }
     environment {
         GCP_PROJECT_ID = "searce-academy"
+        JenkinsDockerGCRSecret = credentials('jenkins-docker-gcr-secret')
     }
     stages {
         stage ('git clone - main') {
