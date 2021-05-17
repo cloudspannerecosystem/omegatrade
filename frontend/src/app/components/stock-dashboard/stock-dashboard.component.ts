@@ -1,25 +1,25 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { StockChart } from 'angular-highcharts';
+import { Component, OnInit, OnDestroy ,ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RestService } from '../../services/rest.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { take } from 'rxjs/operators';
 import { SnackBarService } from '../../services/snackbar.service';
-
+import { GoogleChartComponent } from 'angular-google-charts';
 @Component({
   selector: 'app-stock-dashboard',
   templateUrl: './stock-dashboard.component.html',
   styleUrls: ['./stock-dashboard.component.css']
 })
-export class StockDashboardComponent implements OnInit , OnDestroy{
+export class StockDashboardComponent implements OnInit, OnDestroy {
 
   selectedCompany: string = "";
   lastUpdatedTime;
-  stock: StockChart;
   companies: any;
   loader: boolean = false;
   timerIds = [];
-  
+  areaChartData:any;
+  @ViewChild(GoogleChartComponent)
+  public readonly chart: GoogleChartComponent;
   constructor(private snackBarService: SnackBarService, private router: ActivatedRoute, private _snackBar: MatSnackBar, private restService: RestService) {
   }
 
@@ -44,7 +44,7 @@ export class StockDashboardComponent implements OnInit , OnDestroy{
           if (response && response.success) {
             this.companies = response.data;
             if (this.companies && this.companies.length > 0) {
-              if(!this.selectedCompany || this.selectedCompany === "")
+              if (!this.selectedCompany || this.selectedCompany === "")
                 this.selectedCompany = this.companies[0].companyId;
               this.getStockData();
             }
@@ -66,8 +66,11 @@ export class StockDashboardComponent implements OnInit , OnDestroy{
    */
   getStockData() {
     if (this.selectedCompany) {
+      // clearing the chart to avoid showing previously loaded chart.
+      if(this.chart && this.chart.chartWrapper){
+        this.chart.chartWrapper.getChart().clearChart();
+      }
       this.loader = true;
-      this.stock = new StockChart({});
       this.restService.getData(`companies/dashboard/${this.selectedCompany}`)
         .pipe(take(1))
         .subscribe(
@@ -76,7 +79,7 @@ export class StockDashboardComponent implements OnInit , OnDestroy{
               const stocks = response.data.stocks;
               const company = response.data.company;
               if (stocks && stocks.length > 0) {
-                this.parseStockDatas(stocks,company);
+                this.parseStockDatas(stocks, company);
               } else if (company && company.status === 'PROCESSING') {
                 /**
                  * Retrying getStockData in the case of empty stocks at that current time. 
@@ -108,13 +111,13 @@ export class StockDashboardComponent implements OnInit , OnDestroy{
    * @param stocks  contains unformatted stocks data
    * @param company contains company information - companyName,shortCode and status
    */
-  parseStockDatas(stocks,company) {
+  parseStockDatas(stocks, company) {
     const chartData = [];
     this.lastUpdatedTime = stocks[(stocks.length - 1)].date;
     for (var i = 0; i < stocks.length; i++) {
-      chartData.push([stocks[i].date, parseInt(stocks[i].currentValue)])
+      chartData.push([new Date(stocks[i].date), parseInt(stocks[i].currentValue)]);
     }
-    this.createChart(chartData,company)
+    this.createChart(chartData, company)
   }
 
   /**
@@ -122,23 +125,33 @@ export class StockDashboardComponent implements OnInit , OnDestroy{
    * @param chartData Formatted chart data
    * @param company contains company information.
    */
-  createChart(chartData,company) {
-    this.stock = new StockChart({
-      rangeSelector: {
-        selected: 1
-      },
-      title: {
-        text: company.companyName + ' Stock Price'
-      },
-      series: [{
-        tooltip: {
-          valueDecimals: 2,
+  createChart(chartData, company) {
+    this.areaChartData = {
+      type: 'AreaChart',
+      data: chartData,
+      columnNames: ["Date", company.companyName],
+      options: {
+        animation: {
+          duration: 500,
+          easing: 'out'
         },
-        name: company.companyShortCode,
-        type: 'line',
-        data: chartData,
-      }]
-    });
+        legend: {
+          position: 'left'
+        },
+        title: company.companyName + ' Stock Price',
+        chartArea:{width:"85%",height:"75%"},
+        hAxis: {
+          title: 'Date',
+          direction: 1,
+          slantedText: true,
+          slantedTextAngle: 45,
+        },
+        vAxis: {
+          title: 'Stock Price'
+        },
+      },
+      height: 600
+    };
     if (company && company.status === 'PROCESSING') {
       this.updateDashboard();
     }
@@ -153,27 +166,26 @@ export class StockDashboardComponent implements OnInit , OnDestroy{
             if (response && response.success) {
               const data = response.data.stocks;
               const company = response.data.company;
-              if (company && company.status == 'COMPLETED' || company.status === null) {
-                  // Canceling subscription when simulation completed
-                  this.clearAllTimeOuts()
+              if (company && company.status && company.status == 'COMPLETED') {
+                // Canceling subscription when simulation completed
+                this.clearAllTimeOuts()
               } else {
                 if (data && data.length > 0) {
                   // updating lastUpdatedtime with current stock data
                   this.lastUpdatedTime = data[(data.length - 1)].date;
-                  this.stock.ref$.pipe(take(1)).subscribe(chart => {
-                    for (var i = 0; i < data.length; i++) {
-                      chart.series[0].addPoint([data[i].date, parseInt(data[i].currentValue)]);
-                    }
-                  });
+                  for (var i = 0; i < data.length; i++) {
+                    this.areaChartData.data.push([new Date(data[i].date), parseInt(data[i].currentValue)]);
+                    this.areaChartData.data = Object.assign([], this.areaChartData.data);
+                  }
                 }
-                if(company && company.status == 'PROCESSING'){
+                if (company && company.status == 'PROCESSING') {
                   /**
                    * Retrying getStockData in the case of empty stocks at that current time. 
                    * But it may have data since the staus is in PROCESSING,
                    * so fetching the datas of running simulation in certain interval.
                    * 
                    */
-                   const id = setTimeout(() => {
+                  const id = setTimeout(() => {
                     this.updateDashboard();
                   }, 5000);
                   this.timerIds.push(id);
@@ -190,7 +202,7 @@ export class StockDashboardComponent implements OnInit , OnDestroy{
           });
     }
   }
-  
+
   /**
    * Function to clear all timeout functions
    */
@@ -202,9 +214,19 @@ export class StockDashboardComponent implements OnInit , OnDestroy{
       }
     }
   }
-  
+
   ngOnDestroy() {
     this.clearAllTimeOuts();
+  }
+
+  /**
+   * Function to clear the chart on Error.
+   * @param chart 
+   */
+   onError(chart){
+    if(chart)
+      chart.clearChart();
+    return;  
   }
 }
 

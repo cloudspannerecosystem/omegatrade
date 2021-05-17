@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ChartModule } from 'angular-highcharts';
+import { GoogleChartsModule } from 'angular-google-charts';
 import { LoginComponent } from './components/login/login.component';
 import { ValidationService } from './services/validation.service';
 import { ControlMessagesComponent } from './components/control-messages/control-messages.component';
@@ -53,8 +53,8 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
+    GoogleChartsModule,
     SocialLoginModule,
-    ChartModule,
   ],
   exports: [ControlMessagesComponent],
   providers: [ValidationService, AuthGuardService, TokenStorageService,
