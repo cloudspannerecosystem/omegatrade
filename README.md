@@ -1,7 +1,7 @@
 # Omega Trade App
 
 Sample application for [Spanner Terraform Example](https://github.com/cloudspannerecosystem/spanner-terraform-example).  
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.0 and [Express](https://github.com/expressjs/express/blob/master/Readme.md) (Node.js web application framework) version 4.17.0.
+This project was built using [Angular CLI](https://github.com/angular/angular-cli) version 11.0.0 and [Express](https://github.com/expressjs/express/blob/master/Readme.md) (Node.js web application framework) version 4.17.0.
 
 ## Dependencies
 * Cloud Spanner - [Emulator](https://cloud.google.com/spanner/docs/emulator)
@@ -11,7 +11,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 #### Starting the Emulator Locally 
 
-There are various options to start the emulator locally. Here we will cover the gcloud instructions. Although all other methods can be found within the Cloud Spanner Emulator [GitHub repository](https://github.com/GoogleCloudPlatform/cloud-spanner-emulator/blob/master/README.md#quickstart). 
+There are various options to start the emulator locally. Here we will cover the gcloud instructions. All other methods can be found within the Cloud Spanner Emulator [GitHub repository](https://github.com/GoogleCloudPlatform/cloud-spanner-emulator/blob/master/README.md#quickstart). 
 
 Via gcloud commands
 
@@ -20,7 +20,7 @@ gcloud components update
 gcloud emulators spanner start 
 ```
 
-Let’s create a configuration for the emulator. This is a one-time setup and can be reused subsequently. Run following commands
+Let’s create a configuration for the emulator. This is a one-time setup and can be reused subsequently. Run the following commands:
 
 ```
 gcloud config configurations create emulator
@@ -29,7 +29,7 @@ gcloud config set project test-project
 gcloud config set api_endpoint_overrides/spanner http://localhost:9020/
 ```
 
-In your development environment, you might want to switch between using a local emulator or connecting to a production Cloud Spanner instance. You can manage this by having multiple gcloud configurations and switching between configurations by using the following command
+In your development environment, you might want to switch between using a local emulator or connecting to a production Cloud Spanner instance. You can manage this by having multiple gcloud configurations and switching between configurations by using the following command:
 
 
 ```
@@ -114,7 +114,7 @@ Verify if these tables were successfully created by querying **INFORMATION_SCHEM
 gcloud spanner databases execute-sql omegatrade-db  --instance=omegatrade-instance  --sql='SELECT * FROM information_schema.tables WHERE table_schema <> "INFORMATION_SCHEMA"'
 ```
 
-Now the emulator is up and running, let’s clone this repo and run the backend service of OmegaTrade with the emulator. 
+Now that the emulator is up and running, let’s clone this repo and run the backend service of OmegaTrade with the emulator. 
 
 ```
 cd backend
@@ -144,7 +144,7 @@ node server.js
 
 The above command will run the Backend Service in `http://localhost:3000/`
 
-let’s run the **frontend** service of OmegaTrade.
+Let’s now run the **frontend** service of OmegaTrade.
 
 ```
 cd frontend
