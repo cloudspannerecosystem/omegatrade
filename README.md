@@ -122,11 +122,11 @@ cd backend
 #Install Dependencies
 npm install 
 
-#create logs folder and assign permissions
+#create logs folder and assign permissions (if this didn't happen by default)
 mkdir logs && sudo chmod 777 logs  
 ```
 
-Verify .env file and ensure the **project id, instance name and database** name match the once we created above. 
+Verify .env file and ensure the **project id, instance name and database** name match the ones we created above. 
 
 ```
 PROJECTID = test-project
