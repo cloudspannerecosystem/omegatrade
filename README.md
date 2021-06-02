@@ -114,7 +114,7 @@ Verify if these tables were successfully created by querying **INFORMATION_SCHEM
 gcloud spanner databases execute-sql omegatrade-db  --instance=omegatrade-instance  --sql='SELECT * FROM information_schema.tables WHERE table_schema <> "INFORMATION_SCHEMA"'
 ```
 
-Now that the emulator is up and running, let’s clone this repo and run the backend service of OmegaTrade with the emulator. 
+Now the emulator is up and running, let’s clone this repo and run the backend service of OmegaTrade with the emulator. 
 
 ```
 cd backend
@@ -122,11 +122,12 @@ cd backend
 #Install Dependencies
 npm install 
 
-#create logs folder and assign permissions (if this didn't happen by default)
-mkdir logs && sudo chmod 777 logs  
+#create logs folder and assign permissions (if not already exists)
+mkdir logs  
+sudo chmod 777 logs  
 ```
 
-Verify .env file and ensure the **project id, instance name and database** name match the ones we created above. 
+create .env file in the **backend folder**(if not already exists) and ensure the **project id, instance name and database** name match the ones we created above. 
 
 ```
 PROJECTID = test-project
@@ -137,7 +138,6 @@ EXPIRE_IN = 2d
 ```
 
 ```
-npm install
 export SPANNER_EMULATOR_HOST="localhost:9010"
 node server.js
 ```
