@@ -199,6 +199,6 @@ export const environment = {
 };
 ```
 
-## 3. Setup Frontend
+## 4.Run the Application.
 
 Run `ng serve` in the frontend folder. This will serve the whole application and the appliction will be start running in the url `http://localhost:4200/`. 
