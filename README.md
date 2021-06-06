@@ -5,11 +5,22 @@ This project was built using [Angular CLI](https://github.com/angular/angular-cl
 
 ## Dependencies
 * Cloud Spanner - [Emulator](https://cloud.google.com/spanner/docs/emulator)
+  * The emulator is included in the [Google Cloud SDK](https://cloud.google.com/sdk)
+and can be invoked via the [gcloud emulators command ](
+https://cloud.google.com/sdk/gcloud/reference/emulators). 
 * Cloud Spanner - [Node.js Client](https://www.npmjs.com/package/@google-cloud/spanner)
+  * This package can be installed through node packages while setting up backend services.
 
-## Development server
+## Quickstart
 
-#### Starting the Emulator Locally 
+In order to Run OmegaTrade Application, you need to follow the below steps:
+
+1. Setup Emulator and create Instance, Database and schema in the emulator.
+2. Setup Backend service and connect Emulator. 
+3. Setup Frontend service and configure API BASE URL and google Authentication.
+4. Run the Application.
+
+## 1. Setup Emulator
 
 There are various options to start the emulator locally. Here we will cover the gcloud instructions. All other methods can be found within the Cloud Spanner Emulator [GitHub repository](https://github.com/GoogleCloudPlatform/cloud-spanner-emulator/blob/master/README.md#quickstart). 
 
@@ -114,6 +125,7 @@ Verify if these tables were successfully created by querying **INFORMATION_SCHEM
 gcloud spanner databases execute-sql omegatrade-db  --instance=omegatrade-instance  --sql='SELECT * FROM information_schema.tables WHERE table_schema <> "INFORMATION_SCHEMA"'
 ```
 
+## 2. Setup Backend
 Now the emulator is up and running, let’s clone this repo and run the backend service of OmegaTrade with the emulator. 
 
 ```
@@ -144,6 +156,8 @@ node server.js
 
 The above command will run the Backend Service in `http://localhost:3000/`
 
+## 3. Setup Frontend
+
 Let’s now run the **frontend** service of OmegaTrade.
 
 ```
@@ -153,7 +167,7 @@ cd frontend
 npm install 
 ```
 
-#### Creating Google Oauth Credentials
+#### Creating Google Oauth Credentials (This is required to login into the application using Google authentication)
 
 Step 1: Go to the [Google API Console Credentials](https://console.developers.google.com/apis/credentials). Click on Create Credentials and choose OAuth client ID. 
 
@@ -185,4 +199,6 @@ export const environment = {
 };
 ```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## 4.Run the Application.
+
+Run `ng serve` in the frontend folder. This will serve the whole application and the appliction will be start running in the url `http://localhost:4200/`. 
