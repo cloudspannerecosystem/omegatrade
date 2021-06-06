@@ -202,3 +202,5 @@ export const environment = {
 ## 4.Run the Application.
 
 Run `ng serve` in the frontend folder. This will serve the whole application and the appliction will be start running in the url `http://localhost:4200/`. 
+
+(NOTE: In Order to use Google Authentication in your application, you just need to add this generated url `http://localhost:4200` in Authorized JavaScript origins of your [Google API Console Credentials](https://console.developers.google.com/apis/credentials)).
