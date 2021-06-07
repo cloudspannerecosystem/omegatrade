@@ -158,7 +158,7 @@ The above command will run the Backend Service in `http://localhost:3000/`
 
 ## 3. Setup Frontend
 
-Now lets run the **frontend** service of OmegaTrade.
+Now let's run the **frontend** service of OmegaTrade.
 
 ```
 cd frontend
@@ -179,7 +179,7 @@ You can also follow the [official guide](https://support.google.com/cloud/answer
 
 The client id looks like this 142706365772-ol2a8hcqs1d3rrgjgvxxxxxxxxdqpog8.apps.googleusercontent.com
 
-Now lets configure client id and backend API url.
+Now let's configure client id and backend API url.
 
 ```
 cd src/environments
