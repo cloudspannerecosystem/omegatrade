@@ -139,7 +139,7 @@ mkdir logs
 sudo chmod 777 logs  
 ```
 
-create .env file in the **backend folder**(if not already exists) and ensure the **project id, instance name and database** name match the ones we created above. 
+Create .env file in the **backend folder** (if not already exists) and ensure the **project id, instance name and database** name match the ones we created above. 
 
 ```
 PROJECTID = test-project
@@ -158,7 +158,7 @@ The above command will run the Backend Service in `http://localhost:3000/`
 
 ## 3. Setup Frontend
 
-Let’s now run the **frontend** service of OmegaTrade.
+Now lets run the **frontend** service of OmegaTrade.
 
 ```
 cd frontend
@@ -199,7 +199,7 @@ export const environment = {
 };
 ```
 
-## 4.Run the Application.
+## 4. Run the Application.
 
 Run `ng serve` in the frontend folder. This will serve the whole application and the appliction will be start running in the url `http://localhost:4200/`. 
 
