@@ -197,17 +197,13 @@ Google Authentication enables you to sign in with your google account directly f
 
 #### Creating Google Oauth Credentials (This is required to login into the application using Google authentication)
 
-Step 1: Go to the [Google API Console Credentials](https://console.developers.google.com/apis/credentials). Click on Create Credentials and choose OAuth client ID. 
+Step 5.1: Go to the [Google API Console Credentials](https://console.developers.google.com/apis/credentials). Click on Create Credentials and choose OAuth client ID. 
 
-step 2: In application type, choose Web application and name whatever you like. Click create to continue.   
+step 5.2: In application type, choose Web application and name whatever you like.   
 
-step 3: Note down your client ID as you need to configure this in the frontend. 
+step 5.3: Add frontend url i.e. `http://localhost:4200/` (from step 4) in Authorized JavaScript origins **ADD URI** section and Click create to continue. This will create Client ID.
 
-You can also follow the [official guide](https://support.google.com/cloud/answer/6158849?hl=en#zippy=) for setting up Oauth.
-
-The client id looks like this 142706365772-ol2a8hcqs1d3rrgjgvxxxxxxxxdqpog8.apps.googleusercontent.com
-
-step 4: Once you generate the client id you have to use it in the environment.ts file of frontend folder.
+step 5.4: Now add the Client ID in the `environment.ts` file of frontend folder.
 
 ```
 cd src/environments
@@ -226,5 +222,7 @@ export const environment = {
   clientId: "142706365772-ol2a8hcqs1d3rrgjgvxxxxxxxxdqpog8.apps.googleusercontent.com"
 };
 ```
+
+NOTE: You can also follow the [official guide](https://support.google.com/cloud/answer/6158849?hl=en#zippy=) for setting up Oauth.
 
 Now Angular CLI will automatically detect your changes and serve the app `http://localhost:4200/` url.
