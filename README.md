@@ -17,10 +17,11 @@ In order to Run OmegaTrade Application, you need to follow the below steps:
 
 1. Setup Emulator and create Instance, Database and schema in the emulator.
 2. Setup Backend service and connect Emulator. 
-3. Setup Frontend service and configure API BASE URL and google Authentication.
+3. Setup Frontend service and configure API BASE URL.
 4. Run the Application.
+5. Configure google Authentication in frontend(optional step) - this step will enable you to sign in with your google account.
 
-## 1. Setup Emulator
+## 1. Setup Emulator.
 
 There are various options to start the emulator locally. Here we will cover the gcloud instructions. All other methods can be found within the Cloud Spanner Emulator [GitHub repository](https://github.com/GoogleCloudPlatform/cloud-spanner-emulator/blob/master/README.md#quickstart). 
 
@@ -125,7 +126,7 @@ Verify if these tables were successfully created by querying **INFORMATION_SCHEM
 gcloud spanner databases execute-sql omegatrade-db  --instance=omegatrade-instance  --sql='SELECT * FROM information_schema.tables WHERE table_schema <> "INFORMATION_SCHEMA"'
 ```
 
-## 2. Setup Backend
+## 2. Setup Backend.
 Now the emulator is up and running, let’s clone this repo and run the backend service of OmegaTrade with the emulator. 
 
 ```
@@ -156,7 +157,7 @@ node server.js
 
 The above command will run the Backend Service in `http://localhost:3000/`
 
-## 3. Setup Frontend
+## 3. Setup Frontend.
 
 Now let's run the **frontend** service of OmegaTrade.
 
@@ -167,18 +168,6 @@ cd frontend
 npm install 
 ```
 
-#### Creating Google Oauth Credentials (This is required to login into the application using Google authentication)
-
-Step 1: Go to the [Google API Console Credentials](https://console.developers.google.com/apis/credentials). Click on Create Credentials and choose OAuth client ID. 
-
-step 2: In application type, choose Web application and name whatever you like. Click create to continue.   
-
-step 3: Note down your client ID as you need to configure this in the frontend. 
-
-You can also follow the [official guide](https://support.google.com/cloud/answer/6158849?hl=en#zippy=) for setting up Oauth.
-
-The client id looks like this 142706365772-ol2a8hcqs1d3rrgjgvxxxxxxxxdqpog8.apps.googleusercontent.com
-
 Now let's configure client id and backend API url.
 
 ```
@@ -186,7 +175,7 @@ cd src/environments
 vi environment.ts
 ```
 
-Change the **base URL** according to the **backend URL** (keep the /api/v1 as it is) and clientId.
+Change the **base URL** according to the **backend URL** (keep the /api/v1 as it is)..
 
 ```
 export const environment = {
@@ -194,8 +183,7 @@ export const environment = {
   name: "dev",
   // change baseUrl according to backend URL
   baseUrl: "http://localhost:3000/api/v1/", 
-  // change clientId to actual value you have received from Oauth console
-  clientId: "142706365772-ol2a8hcqs1d3rrgjgvxxxxxxxxdqpog8.apps.googleusercontent.com"
+  clientId: ""
 };
 ```
 
@@ -203,4 +191,38 @@ export const environment = {
 
 Run `ng serve` in the frontend folder. This will serve the whole application and the appliction will be start running in the url `http://localhost:4200/`. 
 
-(NOTE: In Order to use Google Authentication in your application, you just need to add this generated url `http://localhost:4200` in Authorized JavaScript origins of your [Google API Console Credentials](https://console.developers.google.com/apis/credentials)).
+## 5. Setup Google Authentication in Frontend. (optional)
+
+Google Authentication enables you to sign in with your google account directly from the application. In Order to use this service you just need to follow the below steps.
+
+#### Creating Google Oauth Credentials (This is required to login into the application using Google authentication)
+
+Step 5.1: Go to the [Google API Console Credentials](https://console.developers.google.com/apis/credentials). Click on Create Credentials and choose OAuth client ID. 
+
+step 5.2: In application type, choose Web application and name whatever you like.   
+
+step 5.3: Add frontend url i.e. `http://localhost:4200/` (from step 4) in Authorized JavaScript origins **ADD URI** section and Click create to continue. This will create Client ID.
+
+step 5.4: Now add the Client ID in the `environment.ts` file of frontend folder.
+
+```
+cd src/environments
+vi environment.ts
+```
+
+Change the **clientId** as per step 3.
+
+```
+export const environment = {
+  production: false,
+  name: "dev",
+  // change baseUrl according to backend URL
+  baseUrl: "http://localhost:3000/api/v1/", 
+  // change clientId to actual value you have received from Oauth console 
+  clientId: "142706365772-ol2a8hcqs1d3rrgjgvxxxxxxxxdqpog8.apps.googleusercontent.com"
+};
+```
+
+NOTE: You can also follow the [official guide](https://support.google.com/cloud/answer/6158849?hl=en#zippy=) for setting up Oauth.
+
+Now Angular CLI will automatically detect your changes and serve the app in `http://localhost:4200/` url.
