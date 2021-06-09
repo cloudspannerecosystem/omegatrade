@@ -157,7 +157,7 @@ node server.js
 
 The above command will run the Backend Service in `http://localhost:3000/`
 
-## 3. Setup Frontend
+## 3. Setup Frontend.
 
 Now let's run the **frontend** service of OmegaTrade.
 
@@ -175,7 +175,7 @@ cd src/environments
 vi environment.ts
 ```
 
-Change the **base URL** according to the **backend URL** (keep the /api/v1 as it is) and clientId.
+Change the **base URL** according to the **backend URL** (keep the /api/v1 as it is)..
 
 ```
 export const environment = {
@@ -183,7 +183,6 @@ export const environment = {
   name: "dev",
   // change baseUrl according to backend URL
   baseUrl: "http://localhost:3000/api/v1/", 
-  // change clientId to actual value you have received from Oauth console 
   clientId: ""
 };
 ```
@@ -228,4 +227,4 @@ export const environment = {
 };
 ```
 
-Now Angular CLI will automatically detect your changes and serve it in the url `http://localhost:4200/`.
+Now Angular CLI will automatically detect your changes and serve the app `http://localhost:4200/` url.
