@@ -6,8 +6,8 @@ This project was built using [Angular CLI](https://github.com/angular/angular-cl
 ## Dependencies
 * Cloud Spanner - [Emulator](https://cloud.google.com/spanner/docs/emulator)
   * The emulator is included in the [Google Cloud SDK](https://cloud.google.com/sdk)
-and can be invoked via the [gcloud emulators command ](
-https://cloud.google.com/sdk/gcloud/reference/emulators). Please [install](https://cloud.google.com/sdk/docs/install) Cloud SDK if you haven't already. 
+and can be invoked via the [gcloud emulators spanner](https://cloud.google.com/sdk/gcloud/reference/emulators/spanner) commands. 
+  * Please [install](https://cloud.google.com/sdk/docs/install) Cloud SDK before proceeding further, if you haven't already. 
 * Cloud Spanner - [Node.js Client](https://www.npmjs.com/package/@google-cloud/spanner)
   * This package would be installed through `npm install` command while setting up backend services as a part of [Step 2](https://github.com/cloudspannerecosystem/omegatrade#2-setup-backend).
 
