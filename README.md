@@ -188,4 +188,4 @@ export const environment = {
 
 NOTE: You can also follow the [official guide](https://support.google.com/cloud/answer/6158849?hl=en#zippy=) for setting up Oauth.
 
-Now Angular CLI will automatically detect your changes and serve the app in `http://localhost:4200/` url.
+Now Angular CLI will automatically detect your changes and serve the app in `http://localhost:4200/` URL.
