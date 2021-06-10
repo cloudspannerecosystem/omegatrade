@@ -59,8 +59,7 @@ Let’s create an instance, database and some tables on the local emulator.
 #### Create an instance in the emulator 
 
 ```
-gcloud spanner instances create omegatrade-instance --config=emulator-config \
---description="OmegaTrade Instance - Cloud Spanner Emulator" --nodes=3
+gcloud spanner instances create omegatrade-instance --config=emulator-config --description="OmegaTrade Instance - Cloud Spanner Emulator" --nodes=3
 ```
 
 #### Create a database
