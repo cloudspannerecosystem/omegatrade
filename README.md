@@ -7,19 +7,19 @@ This project was built using [Angular CLI](https://github.com/angular/angular-cl
 * Cloud Spanner - [Emulator](https://cloud.google.com/spanner/docs/emulator)
   * The emulator is included in the [Google Cloud SDK](https://cloud.google.com/sdk)
 and can be invoked via the [gcloud emulators command ](
-https://cloud.google.com/sdk/gcloud/reference/emulators). 
+https://cloud.google.com/sdk/gcloud/reference/emulators). Please [install](https://cloud.google.com/sdk/docs/install) Cloud SDK if you haven't already. 
 * Cloud Spanner - [Node.js Client](https://www.npmjs.com/package/@google-cloud/spanner)
-  * This package can be installed through node packages while setting up backend services.
+  * This package would be installed through `npm install` command while setting up backend services as a part of [Step 2](https://github.com/cloudspannerecosystem/omegatrade#2-setup-backend).
 
 ## Quickstart
 
 In order to Run OmegaTrade Application, you need to follow the below steps:
 
-1. Setup Emulator and create Instance, Database and schema in the emulator.
+1. Setup Emulator and create Instance, Database and Schema in the emulator.
 2. Setup Backend service and connect Emulator. 
-3. Setup Frontend service and configure API BASE URL.
+3. Setup Frontend service and configure API base URL.
 4. Run the Application.
-5. Configure google Authentication in frontend(optional step) - this step will enable you to sign in with your google account.
+5. (Optional) Configure Google OAuth in frontend: to enable sign in with your Google account.
 
 ## 1. Setup Emulator.
 
@@ -126,7 +126,7 @@ Verify if these tables were successfully created by querying **INFORMATION_SCHEM
 gcloud spanner databases execute-sql omegatrade-db  --instance=omegatrade-instance  --sql='SELECT * FROM information_schema.tables WHERE table_schema <> "INFORMATION_SCHEMA"'
 ```
 
-## 2. Setup Backend.
+## 2. Setup Backend
 Now the emulator is up and running, let’s clone this repo and run the backend service of OmegaTrade with the emulator. 
 
 ```
@@ -140,7 +140,7 @@ mkdir logs
 sudo chmod 777 logs  
 ```
 
-Create .env file in the **backend folder** (if not already exists) and ensure the **project id, instance name and database** name match the ones we created above. 
+Create .env file in the **backend folder** (if not already exists) and ensure the **Project ID**, **Instance** and **Database** name match the ones we created above. 
 
 ```
 PROJECTID = test-project
@@ -157,7 +157,7 @@ node server.js
 
 The above command will run the Backend Service in `http://localhost:3000/`
 
-## 3. Setup Frontend.
+## 3. Setup Frontend
 
 Now let's run the **frontend** service of OmegaTrade.
 
@@ -187,21 +187,21 @@ export const environment = {
 };
 ```
 
-## 4. Run the Application.
+## 4. Run the Application
 
-Run `ng serve` in the frontend folder. This will serve the whole application and the appliction will be start running in the url `http://localhost:4200/`. 
+Run `ng serve` in the frontend folder. This will serve the whole application and it will start running in the URL `http://localhost:4200/`. 
 
-## 5. Setup Google Authentication in Frontend. (optional)
+## 5. (Optional) Configure Google OAuth in frontend
 
-Google Authentication enables you to sign in with your google account directly from the application. In Order to use this service you just need to follow the below steps.
+Google OAuth enables you to sign in with your Google account directly from the application. In Order to use this service you just need to follow the below steps.
 
-#### Creating Google Oauth Credentials (This is required to login into the application using Google authentication)
+#### Creating Google OAuth credentials
 
 Step 5.1: Go to the [Google API Console Credentials](https://console.developers.google.com/apis/credentials). Click on Create Credentials and choose OAuth client ID. 
 
 step 5.2: In application type, choose Web application and name whatever you like.   
 
-step 5.3: Add frontend url i.e. `http://localhost:4200/` (from step 4) in Authorized JavaScript origins **ADD URI** section and Click create to continue. This will create Client ID.
+step 5.3: Add frontend URL i.e. `http://localhost:4200/` (from step 4) in Authorized JavaScript origins **ADD URI** section and Click create to continue. This will create Client ID.
 
 step 5.4: Now add the Client ID in the `environment.ts` file of frontend folder.
 
