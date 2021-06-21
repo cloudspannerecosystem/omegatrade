@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Optional } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ValidationService } from '../../services/validation.service';
@@ -10,6 +10,7 @@ import { SnackBarService } from '../../services/snackbar.service';
 import { take } from "rxjs/operators";
 import { ChangePasswordComponent } from '../change-password/change-password.component';
 import { MatDialog } from '@angular/material/dialog';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-register',
@@ -20,9 +21,10 @@ export class RegisterComponent implements OnInit {
   signUpForm: any;
   loader = false;
   user: any;
+  enableOAuth:boolean = false;
   
   // tslint:disable-next-line: max-line-length
-  constructor(private snackBarService: SnackBarService, private tokenStorage: TokenStorageService, private formBuilder: FormBuilder, private restService: RestService, private router: Router, private authService: SocialAuthService,private dialog: MatDialog) {
+  constructor(private snackBarService: SnackBarService, private tokenStorage: TokenStorageService, private formBuilder: FormBuilder, private restService: RestService, private router: Router, @Optional() private authService: SocialAuthService,private dialog: MatDialog) {
     // Init sign-up form with form builder.
     this.signUpForm = this.formBuilder.group({
       fullName: ['', [Validators.required]],
@@ -32,6 +34,9 @@ export class RegisterComponent implements OnInit {
       provider: [''],
       photoUrl: ['']
     },{validators: ValidationService.checkPasswords.bind(this)});
+    if(environment.clientId && environment.clientId!=""){
+      this.enableOAuth=true;
+    }
   }
 
   /**

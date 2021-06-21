@@ -13,8 +13,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material-module'
 import { AuthGuardService } from './services/auth-guard.service';
 import { TokenStorageService } from './services/token-storage.service';
-import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
-import { GoogleLoginProvider } from 'angularx-social-login';
 import { HttpConfigInterceptor} from './interceptor/httpconfig.interceptor';
 import { ManageCompanyComponent } from './components/company/manage-company/manage-company.component';
 import { UpdateCompanyComponent } from './components/company/update-company/update-company.component';
@@ -23,9 +21,10 @@ import { SimulationComponent } from './components/simulation/simulation.componen
 import { HeaderComponent } from './components/header/header.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { StockDashboardComponent } from './components/stock-dashboard/stock-dashboard.component';
-import { environment } from 'src/environments/environment';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
-
+import { GoogleAuthModule } from './modules/google-auth.module';
+import { environment } from 'src/environments/environment';
+const googleOAuth = (environment.clientId && environment.clientId!="")?GoogleAuthModule:[];
 
 
 @NgModule({
@@ -54,25 +53,12 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
     MaterialModule,
     HttpClientModule,
     GoogleChartsModule,
-    SocialLoginModule,
+    googleOAuth
   ],
   exports: [ControlMessagesComponent],
   providers: [ValidationService, AuthGuardService, TokenStorageService,
-    { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true },
-    {
-      provide: 'SocialAuthServiceConfig',
-      useValue: {
-        autoLogin: false,
-        providers: [
-          {
-            id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider(
-              environment.clientId
-            )
-          }
-        ]
-      } as SocialAuthServiceConfig,
-    }],
+    { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

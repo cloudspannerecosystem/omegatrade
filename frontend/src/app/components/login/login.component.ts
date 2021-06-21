@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Optional } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ValidationService } from '../../services/validation.service';
@@ -10,6 +10,8 @@ import { SnackBarService } from '../../services/snackbar.service';
 import { ChangePasswordComponent } from '../change-password/change-password.component';
 import { MatDialog } from '@angular/material/dialog';
 import { take } from "rxjs/operators";
+import { environment } from 'src/environments/environment';
+
 
 @Component({
     selector: 'app-login',
@@ -19,13 +21,17 @@ import { take } from "rxjs/operators";
 export class LoginComponent implements OnInit {
     loginForm: any;
     loader = false;
+    enableOAuth:boolean = false;
     
     // tslint:disable-next-line: max-line-length
-    constructor(private snackBarService: SnackBarService, private tokenStorage: TokenStorageService, private authService: SocialAuthService, private restService: RestService, private formBuilder: FormBuilder, private router: Router, private dialog: MatDialog) {
+    constructor(private snackBarService: SnackBarService, private tokenStorage: TokenStorageService, @Optional() private authService: SocialAuthService, private restService: RestService, private formBuilder: FormBuilder, private router: Router, private dialog: MatDialog) {
         this.loginForm = this.formBuilder.group({
             businessEmail: ['', [Validators.required, ValidationService.emailValidator]],
             password: ['', [Validators.required]]
         });
+        if(environment.clientId && environment.clientId!=""){
+            this.enableOAuth=true;
+        }
     }
 
     /**

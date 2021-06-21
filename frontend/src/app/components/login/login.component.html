@@ -11,21 +11,23 @@
           </h1>
         </div>
       </div>
-      <div class="row sign-in-with-google-block">
-        <div class="col-md-12">
-          <a class="btn btn-outline-dark oauth-btn" (click)="signInWithGoogle()" href="javascript:void(0)" role="button">
-            <img width="20px" class="google-logo" alt="Google sign-in"
-              src="assets/images/g-logo.webp" />
-            Sign in with Google
-          </a>
+      <div *ngIf="enableOAuth">
+        <div class="row sign-in-with-google-block">
+          <div class="col-md-12">
+            <a class="btn btn-outline-dark oauth-btn" (click)="signInWithGoogle()" href="javascript:void(0)" role="button">
+              <img width="20px" class="google-logo" alt="Google sign-in"
+                src="assets/images/g-logo.webp" />
+              Sign in with Google
+            </a>
+          </div>
         </div>
-      </div>
-      <div class="row hr-wrapper">
-        <div class="col-12">
-          <div class="input-placeholder col-center">
-            <div class="hr-wrapper">
-              <div class="custom-hr">
-                <span class="hr-text">or</span>
+        <div class="row hr-wrapper">
+          <div class="col-12">
+            <div class="input-placeholder col-center">
+              <div class="hr-wrapper">
+                <div class="custom-hr">
+                  <span class="hr-text">or</span>
+                </div>
               </div>
             </div>
           </div>
