@@ -13,15 +13,15 @@ and can be invoked via the [gcloud emulators spanner](https://cloud.google.com/s
 
 ## Quickstart
 
-In order to Run OmegaTrade Application, you need to follow the below steps:
+In order to run the OmegaTrade application locally, you will need to do the following:
 
-1. Setup Emulator and create Instance, Database and Schema in the emulator.
-2. Setup Backend service and connect Emulator. 
-3. Setup Frontend service and configure API base URL.
+1. Set up the Cloud Spanner Emulator and create the Instance, Database and Schema in the emulator.
+2. Set up the Backend service and connect it to the Emulator. 
+3. Set up the Frontend service and configure the API base URL.
 4. Run the Application.
-5. (Optional) Configure Google OAuth in frontend: to enable sign in with your Google account.
+5. (Optional) Configure Google OAuth in frontend to enable sign in with your Google account.
 
-## 1. Setup Emulator.
+## 1. Emulator Setup.
 
 There are various options to start the emulator locally. Here we will cover the gcloud instructions. All other methods can be found within the Cloud Spanner Emulator [GitHub repository](https://github.com/GoogleCloudPlatform/cloud-spanner-emulator/blob/master/README.md#quickstart). 
 
@@ -89,7 +89,7 @@ Verify if these tables were successfully created by querying **INFORMATION_SCHEM
 gcloud spanner databases execute-sql omegatrade-db  --instance=omegatrade-instance  --sql='SELECT * FROM information_schema.tables WHERE table_schema <> "INFORMATION_SCHEMA"'
 ```
 
-## 2. Setup Backend
+## 2. Set up the Backend
 Now the emulator is up and running, let’s clone this repo and run the backend service of OmegaTrade with the emulator. 
 
 ```
@@ -120,7 +120,7 @@ node server.js
 
 The above command will run the Backend Service in `http://localhost:3000/`
 
-## 3. Setup Frontend
+## 3. Set up the Frontend
 
 Now let's run the **frontend** service of OmegaTrade.
 
@@ -154,7 +154,7 @@ export const environment = {
 
 Run `ng serve` in the frontend folder. This will serve the whole application and it will start running in the URL `http://localhost:4200/`. 
 
-## 5. (Optional) Configure Google OAuth in frontend
+## 5. (Optional) Configure Google OAuth in Frontend
 
 Google OAuth enables you to sign in with your Google account directly from the application. In Order to use this service you just need to follow the below steps.
 
