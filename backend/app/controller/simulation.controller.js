@@ -86,11 +86,12 @@ exports.startSimulation = async function (req, res) {
                 const randomValue = generateRandomValue(100, 110);
                 const dayHigh = randomValue + generateRandomValue();
                 const dayLow = randomValue - generateRandomValue();
+                const price = stock[stockDataCount].price;
                 const stockData = {
                     companyStockId: uuidv4(),
                     companyId: body.companyId,
                     date: Spanner.float(new Date().getTime()),
-                    currentValue: spannerNumericVal(stock[stockDataCount].price),
+                    currentValue: (price && price > 0) ? spannerNumericVal(price) : spannerNumericVal(randomValue),
                     open: spannerNumericVal(randomValue),
                     dayHigh: spannerNumericVal(dayHigh),
                     dayLow: spannerNumericVal(dayLow),

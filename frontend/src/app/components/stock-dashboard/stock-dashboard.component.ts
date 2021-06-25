@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy ,ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import { RestService } from '../../services/rest.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { take } from 'rxjs/operators';
@@ -13,6 +13,7 @@ import { GoogleChartComponent } from 'angular-google-charts';
 export class StockDashboardComponent implements OnInit, OnDestroy {
 
   selectedCompany: string = "";
+  companyName: string = "";
   lastUpdatedTime;
   companies: any;
   loader: boolean = false;
@@ -20,7 +21,7 @@ export class StockDashboardComponent implements OnInit, OnDestroy {
   areaChartData:any;
   @ViewChild(GoogleChartComponent)
   public readonly chart: GoogleChartComponent;
-  constructor(private snackBarService: SnackBarService, private router: ActivatedRoute, private _snackBar: MatSnackBar, private restService: RestService) {
+  constructor(private snackBarService: SnackBarService, private route: ActivatedRoute,private router: Router, private _snackBar: MatSnackBar, private restService: RestService) {
   }
 
   /**
@@ -28,7 +29,7 @@ export class StockDashboardComponent implements OnInit, OnDestroy {
    *  Initiating company lists
    */
   ngOnInit(): void {
-    this.selectedCompany = this.router.snapshot.queryParamMap.get('companyId');
+    this.selectedCompany = this.route.snapshot.queryParamMap.get('companyId');
     this.getCompanies();
   }
 
@@ -47,6 +48,12 @@ export class StockDashboardComponent implements OnInit, OnDestroy {
               if (!this.selectedCompany || this.selectedCompany === "")
                 this.selectedCompany = this.companies[0].companyId;
               this.getStockData();
+            }else{
+              this.snackBarService.openSnackBar("Please create company and simulation.", '');
+              const id = setTimeout(() => {
+                this.router.navigate(["/companies"]);
+              }, 1000);
+              this.timerIds.push(id);
             }
           }
         },
@@ -81,6 +88,7 @@ export class StockDashboardComponent implements OnInit, OnDestroy {
               if (stocks && stocks.length > 0) {
                 this.parseStockDatas(stocks, company);
               } else if (company && company.status === 'PROCESSING') {
+                this.companyName = company && company.companyName ? company.companyName : "";
                 /**
                  * Retrying getStockData in the case of empty stocks at that current time. 
                  * But it may have data since the staus is in PROCESSING,
@@ -91,6 +99,9 @@ export class StockDashboardComponent implements OnInit, OnDestroy {
                   this.getStockData();
                 }, 5000);
                 this.timerIds.push(id);
+              }else{
+                const company = this.companies.filter(company => company.companyId === this.selectedCompany)
+                this.companyName = company[0].companyName;
               }
               this.loader = false;
             }
