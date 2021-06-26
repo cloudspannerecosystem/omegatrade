@@ -40,3 +40,6 @@ th.mat-sort-header-sorted {
 .action-buttons{
     padding:5px;
 }
+.delete-simulation-btn, .start-simulation-btn, .stop-simulation-btn{
+    padding-left: 10px;
+}
