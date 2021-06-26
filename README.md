@@ -125,6 +125,9 @@ The above command will run the Backend Service in `http://localhost:3000/`
 Now let's run the **frontend** service of OmegaTrade.
 
 ```
+#Install Angular CLI (ignore if already installed)
+npm install -g @angular/cli
+
 cd frontend
 
 #Install Dependencies
