@@ -33,7 +33,7 @@ exports.updateSimulation = async function (req, res) {
         const body = req.body;
         if (body) {
             await Simulation.update(body)
-            return res.status(200).json({ success: true, message: `Simulation ${body.status} updated successfully` });
+            return res.status(200).json({ success: true, message: `Simulation ${body.status}` });
         } else {
             return res.status(422).json({ success: false, message: "Update failed, please check the data" });
         }
@@ -105,17 +105,18 @@ exports.startSimulation = async function (req, res) {
                 if (!simulation) {
                     // clears the intervalled loop if simulation deleted 
                     clearInterval(intervalId)
-                } else if (simulation && simulation.sId && simulation.status === 'PROCESSING') {
-                    await Company.createStockData(stockData);
+                } else if (simulation && simulation.sId) {
+                    if (simulation.status === 'PROCESSING') {
+                        await Company.createStockData(stockData);
+                        // clears the interval when stockDataCount reaches value given in data.
+                        if (stockDataCount === (body.data - 1)) {
+                            // update completed status
+                            await Simulation.update({ sId: sId, companyId: body.companyId, status: 'COMPLETED' })
+                            clearInterval(intervalId)
+                        }
+                        stockDataCount++;
+                    }
                 }
-
-                // clears the interval when stockDataCount reaches value given in data.
-                if (stockDataCount === (body.data - 1)) {
-                    // update completed status
-                    await Simulation.update({ sId: sId, companyId: body.companyId, status: 'COMPLETED' })
-                    clearInterval(intervalId)
-                }
-                stockDataCount++;
             }, interval);
             return res.status(200).json({ success: true, sId: sId, message: "Simulation started" });
         } else {

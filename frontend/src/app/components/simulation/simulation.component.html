@@ -98,6 +98,10 @@
               <a href="javascript:void(0)" class="delete-company-btn" matTooltip="delete simulation"
                 (click)="deleteSimulation(row)"><i class="material-icons">delete</i></a>
                 &nbsp;&nbsp;
+              <a href="javascript:void(0)" matTooltip="Pause simulation" *ngIf="row.status =='PROCESSING'" class="stop"
+                (click)="updateSimulation(row.sId,row.companyId,'STOPPED')">
+                <mat-icon aria-hidden="false" aria-label="Start Simulation">pause_circle_filled</mat-icon>
+              </a>
               <a href="javascript:void(0)" matTooltip="start simulation" *ngIf="row.status =='STOPPED'" class="start"
                 (click)="updateSimulation(row.sId,row.companyId,'PROCESSING')">
                 <mat-icon aria-hidden="false" aria-label="Start Simulation">play_circle</mat-icon>
