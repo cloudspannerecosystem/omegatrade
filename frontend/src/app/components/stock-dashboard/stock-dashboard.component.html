@@ -14,24 +14,20 @@
         </mat-form-field>
     </div>
     <div class="row">
-        <div class="col-12" *ngIf="areaChartData; else noDataFound" #stockChart>
+        <div class="col-12" *ngIf="areaChartData" #stockChart>
             <google-chart #chart [type]="areaChartData.type" [data]="areaChartData.data" [columns]="areaChartData.columnNames"
                 [options]="areaChartData.options" [width]="stockChart.offsetWidth" [height]="areaChartData.height" (error)="onError($event)">
             </google-chart>
         </div>
-        <ng-template #noDataFound>
-            <div class="col-12">
-                <mat-card *ngIf="this.companies && this.companies.length ==0 ; else noSimulation">
-                    <p> No stock data found!</p>
-                    <p> Please create company and simulation first.</p>
-                </mat-card>
-                <ng-template #noSimulation>
-                    <mat-card>
-                        <p> Simulation is not started for your selected company (<b>{{ this.companyName }}).</b></p>
-                        <p> Click <a href="javascript:void(0)" routerLink="/simulations" >here</a> to create simulation first.</p>
-                    </mat-card>
-                </ng-template>
-            </div>
-        </ng-template>
+        <div class="col-12">
+            <mat-card *ngIf="companies && companies.length == 0">
+                <p> No stock data found!</p>
+                <p> Please create a company and a simulation first by clicking on Manager Company and Manage Simulations, respectively.</p>
+            </mat-card>
+            <mat-card *ngIf="showNodata===true">
+                <p> Simulation is not started for your selected company (<b>{{ this.companyName }}).</b></p>
+                <p> Click <a href="javascript:void(0)" routerLink="/simulations" >here</a> to create simulation first.</p>
+            </mat-card>
+        </div>
     </div>
 </main>
