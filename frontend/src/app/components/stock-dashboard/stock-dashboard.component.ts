@@ -16,9 +16,10 @@ export class StockDashboardComponent implements OnInit, OnDestroy {
   companyName: string = "";
   lastUpdatedTime;
   companies: any;
-  loader: boolean = false;
+  loader: boolean=false;
   timerIds = [];
   areaChartData:any;
+  showNodata:boolean=false;
   @ViewChild(GoogleChartComponent)
   public readonly chart: GoogleChartComponent;
   constructor(private snackBarService: SnackBarService, private route: ActivatedRoute,private router: Router, private _snackBar: MatSnackBar, private restService: RestService) {
@@ -48,12 +49,6 @@ export class StockDashboardComponent implements OnInit, OnDestroy {
               if (!this.selectedCompany || this.selectedCompany === "")
                 this.selectedCompany = this.companies[0].companyId;
               this.getStockData();
-            }else{
-              this.snackBarService.openSnackBar("Please create company and simulation.", '');
-              const id = setTimeout(() => {
-                this.router.navigate(["/companies"]);
-              }, 1000);
-              this.timerIds.push(id);
             }
           }
         },
@@ -102,6 +97,7 @@ export class StockDashboardComponent implements OnInit, OnDestroy {
               }else{
                 const company = this.companies.filter(company => company.companyId === this.selectedCompany)
                 this.companyName = company[0].companyName;
+                this.showNodata = true;
               }
               this.loader = false;
             }
