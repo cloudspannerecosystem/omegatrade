@@ -155,7 +155,11 @@ export const environment = {
 
 ## 4. Run the Application
 
-Run `ng serve` in the frontend folder. This will serve the whole application and it will start running in the URL `http://localhost:4200/`. 
+`cd ../../`
+
+Run `ng serve` in the **frontend** folder. This will serve the whole application and it will start running in the URL `http://localhost:4200/`. 
+
+Run `./node_modules/@angular/cli/bin/ng serve` in the  **frontend** folder, only if the above command does not work or if your system does not recognise `ng` command.
 
 ## 5. (Optional) Configure Google OAuth in Frontend
 
