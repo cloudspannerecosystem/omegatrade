@@ -23,7 +23,7 @@ In order to run the OmegaTrade application locally, you will need to do the foll
 4. Run the Application.
 5. (Optional) Configure Google OAuth in frontend to enable sign in with your Google account.
 
-## 1. Emulator Setup.
+## 1. Emulator Setup
 
 There are various options to start the emulator locally. Here we will cover the gcloud instructions. All other methods can be found within the Cloud Spanner Emulator [GitHub repository](https://github.com/GoogleCloudPlatform/cloud-spanner-emulator/blob/master/README.md#quickstart). 
 
