@@ -82,7 +82,9 @@ export class StockDashboardComponent implements OnInit, OnDestroy {
               const company = response.data.company;
               if (stocks && stocks.length > 0) {
                 this.parseStockDatas(stocks, company);
+                this.showNodata = false;
               } else if (company && company.status === 'PROCESSING') {
+                this.showNodata = false;
                 this.companyName = company && company.companyName ? company.companyName : "";
                 /**
                  * Retrying getStockData in the case of empty stocks at that current time. 
