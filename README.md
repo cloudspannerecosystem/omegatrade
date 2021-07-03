@@ -4,6 +4,8 @@ Sample application for [Spanner Terraform Example](https://github.com/cloudspann
 This project was built using [Angular CLI](https://github.com/angular/angular-cli) version 11.0.0 and [Express](https://github.com/expressjs/express/blob/master/Readme.md) (Node.js web application framework) version 4.17.0.
 
 ## Dependencies
+* Install [Node](https://nodejs.org/) version >= 10.0.0
+* Install [Angular CLI](https://angular.io/guide/setup-local) 
 * Cloud Spanner - [Emulator](https://cloud.google.com/spanner/docs/emulator)
   * The emulator is included in the [Google Cloud SDK](https://cloud.google.com/sdk)
 and can be invoked via the [gcloud emulators spanner](https://cloud.google.com/sdk/gcloud/reference/emulators/spanner) commands. 
