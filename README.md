@@ -5,7 +5,7 @@ This project was built using [Angular CLI](https://github.com/angular/angular-cl
 
 ## Dependencies
 * Install [Node](https://nodejs.org/en/download/) version >= 10.0
-* Install [Angular CLI](https://angular.io/guide/setup-local) 
+* Install [Angular CLI](https://angular.io/guide/setup-local) - (Refer section 4 for installation steps).
 * Cloud Spanner - [Emulator](https://cloud.google.com/spanner/docs/emulator)
   * The emulator is included in the [Google Cloud SDK](https://cloud.google.com/sdk)
 and can be invoked via the [gcloud emulators spanner](https://cloud.google.com/sdk/gcloud/reference/emulators/spanner) commands. 
@@ -124,7 +124,21 @@ node server.js
 
 The above command will run the Backend Service in `http://localhost:3000/`
 
-## 3. Set up the Frontend
+## 3. Seed Sample Data
+
+Open a new terminal tab and go back to the backend folder.
+
+```
+# In backend folder Run
+
+node seed-data.js 
+```
+the above command will migrate sample data into connected database.
+once succeeded, you will get `Data Loaded successfully` message.
+
+Note: you cannot run the migration if database already contains any company/stocks data.
+
+## 4. Set up the Frontend
 
 Now let's run the **frontend** service of OmegaTrade.
 
@@ -156,21 +170,6 @@ export const environment = {
   clientId: ""
 };
 ```
-
-## 4. Seed Sample Data
-
-Open a new terminal tab and go back to the backend folder.
-
-```
-# In backend folder Run
-
-node seed-data.js 
-```
-the above command will migrate sample data into connected database.
-once succeeded, you will get `Data Loaded successfully` message.
-
-Note: you cannot run the migration if database already contains any company/stocks data.
-
 
 ## 5. Run the Application
 
