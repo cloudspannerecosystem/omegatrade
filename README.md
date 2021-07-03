@@ -1,4 +1,4 @@
-# Omega Trade App
+# OmegaTrade App
 
 Sample application for [Spanner Terraform Example](https://github.com/cloudspannerecosystem/spanner-terraform-example).  
 This project was built using [Angular CLI](https://github.com/angular/angular-cli) version 11.0.0 and [Express](https://github.com/expressjs/express/blob/master/Readme.md) (Node.js web application framework) version 4.17.0.
@@ -96,7 +96,7 @@ Now the emulator is up and running, let’s clone this repo and run the backend 
 
 ```
 git clone https://github.com/cloudspannerecosystem/omegatrade.git
-cd omegatrade/backend/ 
+cd omegatrade/backend
 
 
 #Install Dependencies
@@ -133,10 +133,10 @@ Open a new terminal tab and go back to the backend folder.
 
 node seed-data.js 
 ```
-the above command will migrate sample data into connected database.
-once succeeded, you will get `Data Loaded successfully` message.
+The above command will migrate sample data into the connected database.
+Once this is successful, you will get a `Data Loaded successfully` message.
 
-Note: you cannot run the migration if database already contains any company/stocks data.
+Note: You may run this migration only on an empty database, to avoid duplication.
 
 ## 4. Set up the Frontend
 
