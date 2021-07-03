@@ -1,0 +1,26 @@
+[{
+    "companyId": "6be1ccea-7a36-4c56-9376-9e9f26176c07",
+    "companyName": "Tesla, Inc.",
+    "companyShortCode": "TSLA",
+    "created_at": "2021-07-03T10:39:51.402504000Z"
+}, {
+    "companyId": "bb2420c3-9d7c-4e23-bb12-0405a24485b6",
+    "companyName": "Walmart Inc. ",
+    "companyShortCode": "WMT",
+    "created_at": "2021-07-03T10:40:36.228500000Z"
+}, {
+    "companyId": "0a24c698-4743-4261-a666-6c32e9777160",
+    "companyName": "Adobe Inc.",
+    "companyShortCode": "ADBE",
+    "created_at": "2021-07-03T10:39:26.820620000Z"
+}, {
+    "companyId": "b9a9678d-4f88-4b13-83b9-78a0e4af7a1f",
+    "companyName": "Informatica Corp",
+    "companyShortCode": "INFA",
+    "created_at": "2021-07-03T10:41:48.880233000Z"
+}, {
+    "companyId": "f115eff6-0a3c-4390-9b4f-19276b560fae",
+    "companyName": "Alphabet Inc.",
+    "companyShortCode": "GOOGL",
+    "created_at": "2021-07-03T10:40:12.311480000Z"
+}]

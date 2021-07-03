@@ -1,4 +1,4 @@
-'user strict';
+'use strict';
 const database = require('./../config/database.js');
 const { v4: uuidv4 } = require('uuid');
 const Simulation = function () { };

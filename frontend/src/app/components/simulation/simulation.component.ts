@@ -101,7 +101,9 @@ export class SimulationComponent implements OnInit {
                   if (index > -1) {
                     this.dataSource.data.splice(index, 1)
                     this.dataSource = new MatTableDataSource(this.dataSource.data);
-                    this.runningSimulation = this.dataSource.data.length;
+                    if(simulation.status != "COMPLETED"){
+                      --this.runningSimulation;
+                    }
                     this.initializeSortAndPagination();
                   }
                   this.updateCompanyStatus(simulation.companyId);
@@ -125,7 +127,7 @@ export class SimulationComponent implements OnInit {
    */
   simulate(formDirective: FormGroupDirective) {
     if(this.runningSimulation >= this.maxAllowedSimulation){
-      this.snackBarService.openSnackBar(`Cannot simulate more than ${this.maxAllowedSimulation} simulations`, '');
+      this.snackBarService.openSnackBar(`Cannot simulate more than ${this.maxAllowedSimulation} simulations simultaneously`, '');
       return false;
     }
     this.loader = true;
@@ -161,11 +163,14 @@ export class SimulationComponent implements OnInit {
       .subscribe(
         response => {
           if (response && response.success) {
-            this.runningSimulation = response.data.length;
             this.dataSource = new MatTableDataSource(response.data);
             this.initializeSortAndPagination();
+            this.runningSimulation = 0;
             if (response.data && response.data.length > 0) {
               for (var i = 0; i < response.data.length; i++) {
+                if(response.data[i]['status'] != 'COMPLETED'){
+                  ++this.runningSimulation;
+                }
                 this.updateCompanyStatus(response.data[i].companyId, true)
               }
             }
