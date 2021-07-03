@@ -4,6 +4,8 @@ Sample application for [Spanner Terraform Example](https://github.com/cloudspann
 This project was built using [Angular CLI](https://github.com/angular/angular-cli) version 11.0.0 and [Express](https://github.com/expressjs/express/blob/master/Readme.md) (Node.js web application framework) version 4.17.0.
 
 ## Dependencies
+* Install [Node](https://nodejs.org/en/download/) version >= 10.0.0
+* Install [Angular CLI](https://angular.io/guide/setup-local) 
 * Cloud Spanner - [Emulator](https://cloud.google.com/spanner/docs/emulator)
   * The emulator is included in the [Google Cloud SDK](https://cloud.google.com/sdk)
 and can be invoked via the [gcloud emulators spanner](https://cloud.google.com/sdk/gcloud/reference/emulators/spanner) commands. 
@@ -21,7 +23,7 @@ In order to run the OmegaTrade application locally, you will need to do the foll
 4. Run the Application.
 5. (Optional) Configure Google OAuth in frontend to enable sign in with your Google account.
 
-## 1. Emulator Setup.
+## 1. Emulator Setup
 
 There are various options to start the emulator locally. Here we will cover the gcloud instructions. All other methods can be found within the Cloud Spanner Emulator [GitHub repository](https://github.com/GoogleCloudPlatform/cloud-spanner-emulator/blob/master/README.md#quickstart). 
 
@@ -93,7 +95,9 @@ gcloud spanner databases execute-sql omegatrade-db  --instance=omegatrade-instan
 Now the emulator is up and running, let’s clone this repo and run the backend service of OmegaTrade with the emulator. 
 
 ```
-cd backend
+git clone https://github.com/cloudspannerecosystem/omegatrade.git
+cd omegatrade/backend/ 
+
 
 #Install Dependencies
 npm install 
