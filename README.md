@@ -95,7 +95,9 @@ gcloud spanner databases execute-sql omegatrade-db  --instance=omegatrade-instan
 Now the emulator is up and running, let’s clone this repo and run the backend service of OmegaTrade with the emulator. 
 
 ```
-cd backend
+git clone https://github.com/cloudspannerecosystem/omegatrade.git
+cd omegatrade/backend/ 
+
 
 #Install Dependencies
 npm install 
