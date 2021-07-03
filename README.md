@@ -4,7 +4,7 @@ Sample application for [Spanner Terraform Example](https://github.com/cloudspann
 This project was built using [Angular CLI](https://github.com/angular/angular-cli) version 11.0.0 and [Express](https://github.com/expressjs/express/blob/master/Readme.md) (Node.js web application framework) version 4.17.0.
 
 ## Dependencies
-* Install [Node](https://nodejs.org/en/download/) version >= 10.0.0
+* Install [Node](https://nodejs.org/en/download/) version >= 10.0
 * Install [Angular CLI](https://angular.io/guide/setup-local) 
 * Cloud Spanner - [Emulator](https://cloud.google.com/spanner/docs/emulator)
   * The emulator is included in the [Google Cloud SDK](https://cloud.google.com/sdk)
@@ -157,7 +157,22 @@ export const environment = {
 };
 ```
 
-## 4. Run the Application
+## 4. Seed Sample Data
+
+Open a new terminal tab and go back to the backend folder.
+
+```
+# In backend folder Run
+
+node seed-data.js 
+```
+the above command will migrate sample data into connected database.
+once succeeded, you will get `Data Loaded successfully` message.
+
+Note: you cannot run the migration if database already contains any company/stocks data.
+
+
+## 5. Run the Application
 
 Go back to the frontend folder.
 
@@ -165,7 +180,7 @@ Run `ng serve` in the **frontend** folder. This will serve the whole application
 
 Run `./node_modules/@angular/cli/bin/ng serve` in the  **frontend** folder, only if the above command does not work or if your system does not recognise `ng` command.
 
-## 5. (Optional) Configure Google OAuth in Frontend
+## 6. (Optional) Configure Google OAuth in Frontend
 
 Google OAuth enables you to sign in with your Google account directly from the application. In Order to use this service you just need to follow the below steps.
 
