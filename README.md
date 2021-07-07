@@ -130,7 +130,7 @@ Open a new terminal tab and go back to the backend folder.
 
 ```
 # In backend folder Run
-
+export SPANNER_EMULATOR_HOST="localhost:9010"
 node seed-data.js 
 ```
 The above command will migrate sample data into the connected database.
