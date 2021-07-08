@@ -5,7 +5,6 @@ This project was built using [Angular CLI](https://github.com/angular/angular-cl
 
 ## Dependencies
 * Install [Node](https://nodejs.org/en/download/) version >= 10.0
-* Install [Angular CLI](https://angular.io/guide/setup-local) - (Refer section 4 for installation steps).
 * Cloud Spanner - [Emulator](https://cloud.google.com/spanner/docs/emulator)
   * The emulator is included in the [Google Cloud SDK](https://cloud.google.com/sdk)
 and can be invoked via the [gcloud emulators spanner](https://cloud.google.com/sdk/gcloud/reference/emulators/spanner) commands. 
@@ -143,9 +142,6 @@ Note: You may run this migration only on an empty database, to avoid duplication
 Now let's run the **frontend** service of OmegaTrade.
 
 ```
-#Install Angular CLI (ignore if already installed)
-npm install -g @angular/cli
-
 cd frontend
 
 #Install Dependencies
@@ -175,9 +171,7 @@ export const environment = {
 
 Go back to the frontend folder.
 
-Run `ng serve` in the **frontend** folder. This will serve the whole application and it will start running in the URL `http://localhost:4200/`. 
-
-Run `./node_modules/@angular/cli/bin/ng serve` in the  **frontend** folder, only if the above command does not work or if your system does not recognise `ng` command.
+Run `npm start` in the **frontend** folder. This will serve the whole application and it will start running in the URL `http://localhost:4200/`. 
 
 ## 6. (Optional) Configure Google OAuth in Frontend
 
