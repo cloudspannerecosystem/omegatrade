@@ -4,7 +4,7 @@ Sample application for [Spanner Terraform Example](https://github.com/cloudspann
 This project was built using [Angular CLI](https://github.com/angular/angular-cli) version 11.0.0 and [Express](https://github.com/expressjs/express/blob/master/Readme.md) (Node.js web application framework) version 4.17.0.
 
 ## Dependencies
-* Install [Node](https://nodejs.org/en/download/) version >= 10.0
+* Install [Node](https://nodejs.org/en/download/) version >= 10.16 and [NPM](https://nodejs.org/en/download/) version >= 6.9
 * Cloud Spanner - [Emulator](https://cloud.google.com/spanner/docs/emulator)
   * The emulator is included in the [Google Cloud SDK](https://cloud.google.com/sdk)
 and can be invoked via the [gcloud emulators spanner](https://cloud.google.com/sdk/gcloud/reference/emulators/spanner) commands. 
@@ -207,4 +207,4 @@ export const environment = {
 
 NOTE: You can also follow the [official guide](https://support.google.com/cloud/answer/6158849?hl=en#zippy=) for setting up Oauth.
 
-Now Angular CLI will automatically detect your changes and serve the app in `http://localhost:4200/` URL.
+Now Angular will automatically detect your changes and serve the app in `http://localhost:4200/` URL.
