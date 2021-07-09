@@ -9,12 +9,14 @@ import { Component, OnInit, Inject } from '@angular/core';
 export class ConfirmDialogComponent implements OnInit {
   title: string;
   message: string;
+  isActionMsg:boolean = false;
 
   constructor(public dialogRef: MatDialogRef<ConfirmDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ConfirmDialogModel) {
     // Update view with given values
     this.title = data.title;
     this.message = data.message;
+    this.isActionMsg = data.isActionMsg && data.isActionMsg == true ? true : false;
   }
 
   ngOnInit() {
@@ -37,7 +39,7 @@ export class ConfirmDialogComponent implements OnInit {
  * It has been kept here to keep it as part of shared component.
  */
 export class ConfirmDialogModel {
-
+  isActionMsg: any;
   constructor(public title: string, public message: string) {
   }
 }

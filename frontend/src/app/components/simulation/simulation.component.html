@@ -23,7 +23,7 @@
           <div class="col-3 ">
             <mat-form-field appearance="standard">
               <mat-label>Select Company</mat-label>
-              <mat-select formControlName="companyId" id="companyId">
+              <mat-select formControlName="companyId" id="companyId" (click)="checkCompany()">
                 <mat-option *ngFor="let company of companies" [disabled]="company.disable"
                   [value]="company.companyId">{{ company.companyName }}</mat-option>
               </mat-select>
@@ -69,7 +69,7 @@
         </mat-form-field>
       </div>
     </div>
-    <div class="row mt-10">
+    <div class="row mt-10" *ngIf="dataSource && dataSource.data.length > 0">
       <div class="col-12">
         <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
@@ -113,5 +113,8 @@
         <mat-paginator [pageSizeOptions]="[10, 5, 3]" showFirstLastButtons></mat-paginator>
       </div>
     </div>
+    <mat-card *ngIf="dataSource && dataSource.data.length === 0" class="text-center">
+      <div>No Simulation found.</div>
+    </mat-card>
   </div>
 </main>

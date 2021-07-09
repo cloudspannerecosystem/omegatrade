@@ -22,7 +22,7 @@
         <div class="col-12">
             <mat-card *ngIf="companies && companies.length == 0">
                 <p> No stock data found!</p>
-                <p> Please create a company and a simulation first by clicking on Manager Company and Manage Simulations, respectively.</p>
+                <p> Please create a company and a simulation first by clicking on Manage Company and Manage Simulations, respectively.</p>
             </mat-card>
             <mat-card *ngIf="showNodata===true">
                 <p> Simulation is not started for your selected company (<b>{{ this.companyName }}).</b></p>

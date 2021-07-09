@@ -237,6 +237,38 @@ export class SimulationComponent implements OnInit {
     this.dataSource.filter = this.searchInput.trim().toLowerCase();
   }
 
+  checkCompany() {
+    const companyCount = (this.companies && this.companies.length) ? this.companies.length : 0;
+    if (companyCount == 0) {
+      let message = `No company found, 
+      Please create company first by clicking on Manage Company.`
+      this.showAlertMessage(message)
+    } else {
+      let diabledCount = 0;
+      this.companies.map((company) => {
+        if (company.disable === true) {
+          ++diabledCount;
+        }
+      });
+      if (diabledCount == companyCount) {
+        let message = `All the companies have used for simulations,
+         to create additional simulations, 
+         please go to Manage Company and add more companies first.`
+        this.showAlertMessage(message)
+      }
+    }
+  }
+
+  showAlertMessage(message) {
+    const dialogData = new ConfirmDialogModel("Alert", message);
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: "400px",
+      data: { ...dialogData, isActionMsg: true }
+    });
+    dialogRef.afterClosed().pipe(take(1)).subscribe(dialogResult => {
+    });
+  }
+
 }
 
 export interface SimuationData {

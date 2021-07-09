@@ -7,6 +7,7 @@
   </div>
   
   <div mat-dialog-actions>
-    <button mat-button (click)="onDismiss()">No</button>
-    <button mat-raised-button color="primary" (click)="onConfirm()">Yes</button>
+    <button *ngIf="this.isActionMsg === false" mat-button (click)="onDismiss()">No</button>
+    <button *ngIf="this.isActionMsg === false" mat-raised-button color="primary" (click)="onConfirm()">Yes</button>
+    <button *ngIf="this.isActionMsg === true" mat-raised-button color="primary" (click)="onConfirm()">Close</button>
   </div>

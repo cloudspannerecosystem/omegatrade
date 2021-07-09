@@ -19,7 +19,7 @@
           Company</button>
       </div>
     </div>
-    <div class="row mt-10">
+    <div class="row mt-10" *ngIf="dataSource && dataSource.data.length > 0">
       <div class="col-12">
         <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
@@ -51,5 +51,8 @@
         <mat-paginator [pageSizeOptions]="[10, 5, 3]" showFirstLastButtons></mat-paginator>
       </div>
     </div>
+    <mat-card *ngIf="dataSource && dataSource.data.length === 0" class="no-data-card">
+      <div>No company found, please create company by clicking on <b>Add company</b>.</div>
+    </mat-card>
   </div>
 </main>
