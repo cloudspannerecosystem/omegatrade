@@ -18,9 +18,15 @@ async function insertData() {
         for (var i = 0; i < stocks.length; i++) {
             stocks[i]["date"] = Spanner.float(new Date(parseFloat(stocks[i]["date"])).getTime());
         }
+        console.log('Inserting Companies...');
         await companiesTable.insert(companies);
+        console.log('done')
+        console.log('Inserting Simulations...');
         await simulationsTable.insert(simulations);
+        console.log('done')
+        console.log('Inserting Stocks...');
         await stocksTable.insert(stocks);
+        console.log('done')
         console.log('Data Loaded successfully');
     } catch (err) {
         console.error('ERROR:', err.code);

@@ -20,8 +20,8 @@ export class UpdateCompanyComponent implements OnInit {
     // Init the company Form
     this.companyForm = this.formBuilder.group({
       companyId: ['', []],
-      companyName: ['', [Validators.required]],
-      companyShortCode: ['', [Validators.required]]
+      companyName: ['', [Validators.required,Validators.maxLength(30)]],
+      companyShortCode: ['', [Validators.required,Validators.maxLength(15)]]
     });
     if (data && data.companyId) {
       this.companyForm.setValue({

@@ -20,10 +20,10 @@
     <mat-card>
       <form class="simulation-form" [formGroup]="simulateForm" #formDirective="ngForm"  (submit)="simulate(formDirective)">
         <div class="row">
-          <div class="col-3 ">
+          <div class="col-3 " (click)="checkCompany()">
             <mat-form-field appearance="standard">
               <mat-label>Select Company</mat-label>
-              <mat-select formControlName="companyId" id="companyId" (click)="checkCompany()">
+              <mat-select #mySelect formControlName="companyId" id="companyId">
                 <mat-option *ngFor="let company of companies" [disabled]="company.disable"
                   [value]="company.companyId">{{ company.companyName }}</mat-option>
               </mat-select>
@@ -69,7 +69,7 @@
         </mat-form-field>
       </div>
     </div>
-    <div class="row mt-10" *ngIf="dataSource && dataSource.data.length > 0">
+    <div class="row mt-10">
       <div class="col-12">
         <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
@@ -106,15 +106,14 @@
               </a>
             </td>
           </ng-container>
-
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
+        <div class="no-data-section" *ngIf="dataSource && dataSource.data.length === 0">
+          <span>No Simulation found.</span>
+        </div>
         <mat-paginator [pageSizeOptions]="[10, 5, 3]" showFirstLastButtons></mat-paginator>
       </div>
     </div>
-    <mat-card *ngIf="dataSource && dataSource.data.length === 0" class="text-center">
-      <div>No Simulation found.</div>
-    </mat-card>
   </div>
 </main>

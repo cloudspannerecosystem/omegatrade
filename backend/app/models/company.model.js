@@ -5,7 +5,7 @@ const Company = function () { };
 Company.getAll = async function () {
     const [companies] = await database.run({
         sql: `SELECT companyId , companyName , companyShortCode , created_at 
-              FROM companies`,
+              FROM companies ORDER BY created_at DESC`,
         json: true,
     });
     return companies;

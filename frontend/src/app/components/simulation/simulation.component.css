@@ -43,3 +43,8 @@ th.mat-sort-header-sorted {
 .delete-simulation-btn, .start-simulation-btn, .stop-simulation-btn{
     padding-left: 10px;
 }
+.no-data-section{
+    background: white !important;
+    padding: 20px 0px 5px 0px;
+    text-align: center  ;
+}

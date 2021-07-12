@@ -23,6 +23,7 @@ export class SimulationComponent implements OnInit {
   dataSource: MatTableDataSource<SimuationData>;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  @ViewChild('mySelect') mySelect;
 
   searchInput: String;
   companies: any;
@@ -251,8 +252,8 @@ export class SimulationComponent implements OnInit {
         }
       });
       if (diabledCount == companyCount) {
-        let message = `All the companies have used for simulations,
-         to create additional simulations, 
+        let message = `Simulations have already been created for all available companies.
+         To create additional simulations, 
          please go to Manage Company and add more companies first.`
         this.showAlertMessage(message)
       }
@@ -265,7 +266,8 @@ export class SimulationComponent implements OnInit {
       maxWidth: "400px",
       data: { ...dialogData, isActionMsg: true }
     });
-    dialogRef.afterClosed().pipe(take(1)).subscribe(dialogResult => {
+    dialogRef.afterClosed().pipe(take(1)).subscribe(() => {
+      this.mySelect.close();
     });
   }
 
