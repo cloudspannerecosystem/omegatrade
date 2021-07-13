@@ -142,7 +142,7 @@ Note: You may run this migration only on an empty database, to avoid duplication
 Now let's run the **frontend** service of OmegaTrade.
 
 ```
-cd frontend
+cd .. && cd frontend
 
 #Install Dependencies
 npm install 
