@@ -154,7 +154,7 @@ cd src/environments
 vi environment.ts
 ```
 
-Change the **base URL** according to the **backend URL** (ensure you append the /api/v1 as below)
+Change the **base URL** according to the **backend URL** (ensure you append the /api/v1/ as below)
 
 ```
 export const environment = {
