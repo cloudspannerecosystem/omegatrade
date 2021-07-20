@@ -18,7 +18,7 @@ In order to run the OmegaTrade application locally, you will need to do the foll
 
 1. Set up the Cloud Spanner Emulator and create the Instance, Database and Schema in the emulator.
 2. Set up the Backend service and connect it to the Emulator. 
-3. Seed sample data in the Omegatrade app
+3. Seed sample data in the OmegaTrade app
 4. Set up the Frontend service and configure the API base URL.
 5. Run the Application.
 6. (Optional) Configure Google OAuth in frontend to enable sign in with your Google account.
