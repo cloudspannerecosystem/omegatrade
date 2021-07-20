@@ -18,9 +18,10 @@ In order to run the OmegaTrade application locally, you will need to do the foll
 
 1. Set up the Cloud Spanner Emulator and create the Instance, Database and Schema in the emulator.
 2. Set up the Backend service and connect it to the Emulator. 
-3. Set up the Frontend service and configure the API base URL.
-4. Run the Application.
-5. (Optional) Configure Google OAuth in frontend to enable sign in with your Google account.
+3. Seed sample data in the Omegatrade app
+4. Set up the Frontend service and configure the API base URL.
+5. Run the Application.
+6. (Optional) Configure Google OAuth in frontend to enable sign in with your Google account.
 
 ## 1. Emulator Setup
 
@@ -42,16 +43,15 @@ gcloud config set project test-project
 gcloud config set api_endpoint_overrides/spanner http://localhost:9020/
 ```
 
-In your development environment, you might want to switch between using a local emulator or connecting to a production Cloud Spanner instance. You can manage this by having multiple gcloud configurations and switching between configurations by using the following command:
-
+Once created, you can activate the emulator configuration by using the following command:
 
 ```
-gcloud config configurations activate default
-
-# Or switch to the emulator configuration
 gcloud config configurations activate emulator
+```
 
-# verify it is actually connected to the emulator
+Verify that the emulator configuration is set correctly
+
+```
 gcloud config list
 ```
 
@@ -67,20 +67,15 @@ gcloud spanner instances create omegatrade-instance --config=emulator-config --d
 
 ```
 gcloud spanner databases create omegatrade-db --instance omegatrade-instance
-
 ```
 
-#### Create Tables 
+#### Create tables 
 
 ```
 gcloud spanner databases ddl update omegatrade-db --instance omegatrade-instance --ddl "CREATE TABLE users (userId STRING(36) NOT NULL, businessEmail STRING(50), fullName STRING(36), password STRING(100), photoUrl STRING(250), provider STRING(20), forceChangePassword BOOL) PRIMARY KEY(userId); CREATE UNIQUE NULL_FILTERED INDEX usersByBusinessEmail ON users (businessEmail);"
-
 gcloud spanner databases ddl update omegatrade-db --instance omegatrade-instance --ddl "CREATE TABLE companies (companyId STRING(36) NOT NULL, companyName STRING(30), companyShortCode STRING(15), created_at TIMESTAMP NOT NULL OPTIONS (allow_commit_timestamp=true)) PRIMARY KEY(companyId);"
-
 gcloud spanner databases ddl update omegatrade-db --instance omegatrade-instance --ddl "CREATE UNIQUE NULL_FILTERED INDEX companiesByCompanyName ON companies (companyName); CREATE UNIQUE NULL_FILTERED INDEX companiesByShortCode ON companies (companyShortCode);"
-
 gcloud spanner databases ddl update omegatrade-db --instance omegatrade-instance --ddl "CREATE TABLE companyStocks (companyStockId STRING(36) NOT NULL, companyId STRING(36) NOT NULL, open NUMERIC, volume NUMERIC, currentValue NUMERIC, date FLOAT64, close NUMERIC, dayHigh NUMERIC, dayLow NUMERIC, timestamp TIMESTAMP NOT NULL OPTIONS (allow_commit_timestamp=true), CONSTRAINT FK_CompanyStocks FOREIGN KEY (companyId) REFERENCES companies (companyId)) PRIMARY KEY(companyStockId);"
-
 gcloud spanner databases ddl update omegatrade-db --instance omegatrade-instance --ddl "CREATE TABLE simulations (sId STRING(36) NOT NULL, companyId STRING(36) NOT NULL, status STRING(36), createdAt TIMESTAMP NOT NULL OPTIONS (allow_commit_timestamp=true), CONSTRAINT FK_CompanySimulation FOREIGN KEY (companyId) REFERENCES companies (companyId)) PRIMARY KEY(sId);"
 ```
 
@@ -91,22 +86,27 @@ gcloud spanner databases execute-sql omegatrade-db  --instance=omegatrade-instan
 ```
 
 ## 2. Set up the Backend
-Now the emulator is up and running, let’s clone this repo and run the backend service of OmegaTrade with the emulator. 
+
+Now that the emulator is up and running, let’s clone this repo and run the backend service of OmegaTrade with the emulator. 
 
 ```
 git clone https://github.com/cloudspannerecosystem/omegatrade.git
 cd omegatrade/backend
+```
 
+Install dependencies in the `backend` folder
 
-#Install Dependencies
+```
 npm install 
+```
+Create logs folder and assign permissions (if not already exists)
 
-#create logs folder and assign permissions (if not already exists)
+```
 mkdir logs  
 sudo chmod 777 logs  
 ```
 
-Create .env file in the **backend folder** (if not already exists) and ensure the **Project ID**, **Instance** and **Database** name match the ones we created above. 
+Create .env file in the `backend` folder (if not already exists) and ensure the **Project ID**, **Instance** and **Database** name match the ones we created above. 
 
 ```
 PROJECTID = test-project
@@ -121,14 +121,13 @@ export SPANNER_EMULATOR_HOST="localhost:9010"
 node server.js
 ```
 
-The above command will run the Backend Service in `http://localhost:3000/`
+The above command will run the Backend service in `http://localhost:3000`
 
 ## 3. Seed Sample Data
 
-Open a new terminal tab and go back to the backend folder.
+Open a new terminal tab and go back to the `backend` folder. Run the below commands:
 
 ```
-# In backend folder Run
 export SPANNER_EMULATOR_HOST="localhost:9010"
 node seed-data.js 
 ```
@@ -139,7 +138,7 @@ Note: You may run this migration only on an empty database, to avoid duplication
 
 ## 4. Set up the Frontend
 
-Now let's run the **frontend** service of OmegaTrade.
+Now let's run the frontend service of OmegaTrade.
 
 ```
 cd .. && cd frontend
@@ -148,14 +147,14 @@ cd .. && cd frontend
 npm install 
 ```
 
-Now let's configure client id and backend API url.
+Now let's configure the client ID and backend API url.
 
 ```
 cd src/environments
 vi environment.ts
 ```
 
-Change the **base URL** according to the **backend URL** (keep the /api/v1 as it is)..
+Change the **base URL** according to the **backend URL** (ensure you append the /api/v1 as below)
 
 ```
 export const environment = {
@@ -171,7 +170,7 @@ export const environment = {
 
 Go back to the frontend folder.
 
-Run `npm start` in the **frontend** folder. This will serve the whole application and it will start running in the URL `http://localhost:4200`. 
+Run `npm start` in the `frontend` folder. This will serve the whole application and it will start running in the URL `http://localhost:4200`. 
 
 ## 6. (Optional) Configure Google OAuth in Frontend
 
@@ -181,18 +180,18 @@ Google OAuth enables you to sign in with your Google account directly from the a
 
 Step 6.1: Go to the [Google API Console Credentials](https://console.developers.google.com/apis/credentials). Click on Create Credentials and choose OAuth client ID. 
 
-step 6.2: In application type, choose Web application and name whatever you like.   
+Step 6.2: In application type, choose Web application and name whatever you like.   
 
-step 6.3: Add frontend URL i.e. `http://localhost:4200` (from step 5) in Authorized JavaScript origins **ADD URI** section and Click create to continue. This will create Client ID.
+Step 6.3: Add frontend URL i.e. `http://localhost:4200` (from step 5) in Authorized JavaScript origins **ADD URI** section and Click create to continue. This will create Client ID.
 
-step 6.4: Now add the Client ID in the `environment.ts` file of frontend folder.
+Step 6.4: Now we need to update the Client ID in the `environment.ts` file of frontend folder.
 
 ```
 cd src/environments
 vi environment.ts
 ```
 
-Change the **clientId** as per step 4.
+Update the **clientId** as below.
 
 ```
 export const environment = {
