@@ -171,7 +171,7 @@ export const environment = {
 
 Go back to the frontend folder.
 
-Run `npm start` in the **frontend** folder. This will serve the whole application and it will start running in the URL `http://localhost:4200/`. 
+Run `npm start` in the **frontend** folder. This will serve the whole application and it will start running in the URL `http://localhost:4200`. 
 
 ## 6. (Optional) Configure Google OAuth in Frontend
 
@@ -179,20 +179,20 @@ Google OAuth enables you to sign in with your Google account directly from the a
 
 #### Creating Google OAuth credentials
 
-Step 5.1: Go to the [Google API Console Credentials](https://console.developers.google.com/apis/credentials). Click on Create Credentials and choose OAuth client ID. 
+Step 6.1: Go to the [Google API Console Credentials](https://console.developers.google.com/apis/credentials). Click on Create Credentials and choose OAuth client ID. 
 
-step 5.2: In application type, choose Web application and name whatever you like.   
+step 6.2: In application type, choose Web application and name whatever you like.   
 
-step 5.3: Add frontend URL i.e. `http://localhost:4200/` (from step 4) in Authorized JavaScript origins **ADD URI** section and Click create to continue. This will create Client ID.
+step 6.3: Add frontend URL i.e. `http://localhost:4200` (from step 5) in Authorized JavaScript origins **ADD URI** section and Click create to continue. This will create Client ID.
 
-step 5.4: Now add the Client ID in the `environment.ts` file of frontend folder.
+step 6.4: Now add the Client ID in the `environment.ts` file of frontend folder.
 
 ```
 cd src/environments
 vi environment.ts
 ```
 
-Change the **clientId** as per step 3.
+Change the **clientId** as per step 4.
 
 ```
 export const environment = {
@@ -207,4 +207,4 @@ export const environment = {
 
 NOTE: You can also follow the [official guide](https://support.google.com/cloud/answer/6158849?hl=en#zippy=) for setting up Oauth.
 
-Now Angular will automatically detect your changes and serve the app in `http://localhost:4200/` URL.
+Now Angular will automatically detect your changes and serve the app in `http://localhost:4200` URL.
