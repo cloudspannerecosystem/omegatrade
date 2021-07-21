@@ -170,19 +170,19 @@ export const environment = {
 
 Go back to the frontend folder.
 
-Run `npm start` in the `frontend` folder. This will serve the whole application and it will start running in the URL `http://localhost:4200`. 
+Run `npm start` in the `frontend` folder. This command will serve the whole application and it will start running in the URL `http://localhost:4200`. 
 
 ## 6. (Optional) Configure Google OAuth in Frontend
 
-Google OAuth enables you to sign in with your Google account directly from the application. In Order to use this service you just need to follow the below steps.
+Google OAuth enables you to sign in with your Google account directly from the application. Here are the steps you need to follow in order to use this service.
 
 #### Creating Google OAuth credentials
 
 Step 6.1: Go to the [Google API Console Credentials](https://console.developers.google.com/apis/credentials). Click on Create Credentials and choose OAuth client ID. 
 
-Step 6.2: In application type, choose Web application and name whatever you like.   
+Step 6.2: Choose Web Application in the application type and enter the name of your choice.    
 
-Step 6.3: Add frontend URL i.e. `http://localhost:4200` (from step 5) in Authorized JavaScript origins **ADD URI** section and Click create to continue. This will create Client ID.
+Step 6.3: Add frontend URL i.e. `http://localhost:4200` (from step 5) in Authorized JavaScript origins **ADD URI** section and click on create button. Copy your client id from the popup window.
 
 Step 6.4: Now we need to update the Client ID in the `environment.ts` file of frontend folder.
 
@@ -204,6 +204,6 @@ export const environment = {
 };
 ```
 
-NOTE: You can also follow the [official guide](https://support.google.com/cloud/answer/6158849?hl=en#zippy=) for setting up Oauth.
+NOTE: The official Oauth setup guide can also be found [here](https://support.google.com/cloud/answer/6158849?hl=en#zippy=).
 
 Now Angular will automatically detect your changes and serve the app in `http://localhost:4200` URL.
