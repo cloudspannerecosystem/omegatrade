@@ -1,6 +1,6 @@
 # OmegaTrade App
 
-Sample application for [Spanner Terraform Example](https://github.com/cloudspannerecosystem/spanner-terraform-example).  
+Omega Trade is a Sample application for [Spanner Terraform Example](https://github.com/cloudspannerecosystem/spanner-terraform-example).  
 This project was built using [Angular CLI](https://github.com/angular/angular-cli) version 11.0.0 and [Express](https://github.com/expressjs/express/blob/master/Readme.md) (Node.js web application framework) version 4.17.0.
 
 ## Dependencies
@@ -14,7 +14,7 @@ and can be invoked via the [gcloud emulators spanner](https://cloud.google.com/s
 
 ## Quickstart
 
-In order to run the OmegaTrade application locally, you will need to do the following:
+The following steps will guide you to run the OmegaTrade application locally.
 
 1. Set up the Cloud Spanner Emulator and create the Instance, Database and Schema in the emulator.
 2. Set up the Backend service and connect it to the Emulator. 
@@ -176,15 +176,43 @@ Run `npm start` in the `frontend` folder. This command will serve the whole appl
 
 Google OAuth enables you to sign in with your Google account directly from the application. Here are the steps you need to follow in order to use this service.
 
+#### Creating Omega Trade application in the OAuth Consent screen for the first time.
+
+1. Go to the [OAuth Consent Screen](https://console.cloud.google.com/apis/credentials/consent).
+2. Choose the user type as Internal and click create.
+3. Add Your Application name (i.e Omega Trade) in the App name field.
+4. Choose your email in the User support email section.
+5. Add your email in developer contact information.  
+6. Add your organization's app domain and authorized domain, if you do not have both you can skip this step.
+7. Click save and continue.
+8. Add Scopes if you want and continue with next steps.
+9. Save your changes.
+
+#### Modifying OAuth Consent Screen application.
+
+The following steps are required only if you want to modify the existing application to Omega Trade application.
+
+1. Go to the OAuth Consent screen.
+2. Click on the Edit App. 
+3. Replace the existing application name  with "Omega Trade" in the App name field.
+4. Select the email address for User support email.
+5. Add your email in developer contact information.
+6. Add your organization's app domain and authorized domain, if you do not have both you can skip this step.
+7. Click save and continue 
+8. Add Scopes if you want and continue with the following steps.
+9. Save your changes.
+
 #### Creating Google OAuth credentials
 
-Step 6.1: Go to the [Google API Console Credentials](https://console.developers.google.com/apis/credentials). Click on Create Credentials and choose OAuth client ID. 
+The following steps will guide you to create Oauth Credentials for the registered application.
 
-Step 6.2: Choose Web Application in the application type and enter the name of your choice.    
+1. Go to the [Google API Console Credentials](https://console.developers.google.com/apis/credentials). Click on Create Credentials and choose OAuth client ID. 
 
-Step 6.3: Add frontend URL i.e. `http://localhost:4200` (from step 5) in Authorized JavaScript origins **ADD URI** section and click on create button. Copy your client id from the popup window.
+2. Choose Web Application in the application type and enter the name of your choice.    
 
-Step 6.4: Now we need to update the Client ID in the `environment.ts` file of frontend folder.
+3. Add frontend URL i.e. `http://localhost:4200` (from step 5) in Authorized JavaScript origins **ADD URI** section and click on create button. Copy your client id from the popup window.
+
+4. Now we need to update the Client ID in the `environment.ts` file of frontend folder.
 
 ```
 cd src/environments
