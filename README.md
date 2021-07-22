@@ -192,7 +192,7 @@ Google OAuth enables you to sign in with your Google account directly from the a
 
 The following steps are required only if you want to modify the existing application to Omega Trade application.
 
-1. Go to the OAuth Consent screen.
+1. Go to the [OAuth Consent screen](https://console.cloud.google.com/apis/credentials/consent).
 2. Click on the Edit App. 
 3. Replace the existing application name  with "Omega Trade" in the App name field.
 4. Select the email address for User support email.
