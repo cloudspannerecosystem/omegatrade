@@ -178,9 +178,9 @@ Google OAuth enables you to sign in with your Google account directly from the a
 
 #### Creating Omega Trade application in the OAuth Consent screen for the first time.
 
-1. Go to the [OAuth Consent Screen](https://console.cloud.google.com/apis/credentials/consent).
+1. Go to the [OAuth consent screen](https://console.cloud.google.com/apis/credentials/consent).
 2. Choose the user type as Internal and click create.
-3. Add Your Application name (i.e Omega Trade) in the App name field.
+3. Add your application name (i.e OmegaTrade) in the App name field.
 4. Choose your email in the User support email section.
 5. Add your email in developer contact information.  
 6. Add your organization's app domain and authorized domain, if you do not have both you can skip this step.
@@ -192,13 +192,13 @@ Google OAuth enables you to sign in with your Google account directly from the a
 
 The following steps are required only if you want to modify the existing application to Omega Trade application.
 
-1. Go to the [OAuth Consent screen](https://console.cloud.google.com/apis/credentials/consent).
-2. Click on the Edit App. 
-3. Replace the existing application name  with "Omega Trade" in the App name field.
-4. Select the email address for User support email.
+1. Go to the [OAuth consent screen](https://console.cloud.google.com/apis/credentials/consent).
+2. Click on the Edit App button. 
+3. Replace the existing application name with "OmegaTrade" in the App name field.
+4. Choose your email in the User support email section.
 5. Add your email in developer contact information.
 6. Add your organization's app domain and authorized domain, if you do not have both you can skip this step.
-7. Click save and continue 
+7. Click save and continue. 
 8. Add Scopes if you want and continue with the following steps.
 9. Save your changes.
 
