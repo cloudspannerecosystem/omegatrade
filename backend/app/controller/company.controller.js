@@ -76,10 +76,10 @@ exports.delete = async function (req, res) {
         const companyId = req.params.companyId;
         const simulations = await Company.getCompanySimulation(companyId);
         if (simulations && simulations.length > 0) {
-            return res.status(500).json({ success: false, message: `Deletion Failed!, please delete simulation of company - ${simulations[0].companyName} first.` });
+            return res.status(500).json({ success: false, message: `Deletion Failed, please delete the simulation of the company - ${simulations[0].companyName} first.` });
         } else {
             await Company.delete(companyId);
-            return res.status(200).json({ success: true, message: "company deleted!" });
+            return res.status(200).json({ success: true, message: "Company deleted!" });
         }
     } catch (error) {
         logService.writeLog('company.controller.delete', error);

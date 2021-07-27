@@ -118,13 +118,13 @@ exports.startSimulation = async function (req, res) {
                     }
                 }
             }, interval);
-            return res.status(200).json({ success: true, sId: sId, message: "Simulation started" });
+            return res.status(200).json({ success: true, sId: sId, message: "Simulation started." });
         } else {
-            return res.status(422).json({ success: false, message: "Simulation failed, please check the data" });
+            return res.status(422).json({ success: false, message: "Simulation failed, please check the data." });
         }
     } catch (error) {
         logService.writeLog('simulation.controller.startSimulation', error);
-        return res.status(500).json({ success: false, "message": "Something went wrong while starting simulation" });
+        return res.status(500).json({ success: false, "message": "Something went wrong while starting the simulation." });
     }
 }
 

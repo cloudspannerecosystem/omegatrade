@@ -29,13 +29,13 @@ exports.register = async function (req, res) {
         await User.registerUser({ ...user, password });
         jwt.sign(user, process.env.JWT_KEY, { expiresIn: process.env.EXPIRE_IN }, function (err, token) {
             if (err) {
-                return res.status(500).json({ success: false, message: 'Something went wrong while registering new user!' });
+                return res.status(500).json({ success: false, message: 'Something went wrong while registering a new user!' });
             }
             return res.status(200).json({ success: true, message: 'Registered successfully!', userInfo: user, authToken: token });
         });
     } catch (error) {
         logService.writeLog('user.controller.register', error);
-        return res.status(500).json({ success: false, message: 'Something went wrong while registering new user!' });
+        return res.status(500).json({ success: false, message: 'Something went wrong while registering a new user!' });
     }
 };
 
@@ -55,7 +55,7 @@ exports.login = async function (req, res) {
                 const token = jwt.sign(user, process.env.JWT_KEY, {
                     expiresIn: process.env.EXPIRE_IN
                 });
-                return res.status(200).json({ success: true, message: 'Logged in successfully', userInfo: user, authToken: token });
+                return res.status(200).json({ success: true, message: 'Logged in successfully.', userInfo: user, authToken: token });
             } else {
                 return res.status(409).json({ success: false, message: 'Login failed.' });
             }
@@ -115,7 +115,7 @@ exports.googleSignIn = async function (req, res) {
         
     } catch (error) {
         logService.writeLog('user.controller.googleSignIn', error);
-        return res.status(500).json({ success: false, message: 'Something went wrong,error while authenticating user!' });
+        return res.status(500).json({ success: false, message: 'Something went wrong, error while authenticating user!' });
     }
 };
 
@@ -130,10 +130,10 @@ exports.changePassword = async function (req, res) {
             await User.update(user)
             return res.status(200).json({ success: true, message: 'Password changed successfully', user: user });
         } else {
-            return res.json({ success: false, message: 'Invalid data, please check details you have entered.' });
+            return res.json({ success: false, message: 'Invalid data, please check the details you have entered.' });
         }
     } catch (error) {
         logService.writeLog('user.controller.changePassword', error);
-        return res.status(500).json({ success: false, message: 'Something went wrong,error while attempting to change password.' });
+        return res.status(500).json({ success: false, message: 'Something went wrong, error while attempting to the change password.' });
     }
 }
