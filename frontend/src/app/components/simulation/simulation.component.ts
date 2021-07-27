@@ -85,7 +85,7 @@ export class SimulationComponent implements OnInit {
    */
   deleteSimulation(simulation) {
     if(simulation && simulation.sId && simulation.companyName){
-      const dialogData = new ConfirmDialogModel("Confirm Action", `Are you sure you want to delete simulation for ${simulation.companyName}?`);
+      const dialogData = new ConfirmDialogModel("Confirm Action", `Are you sure you want to delete the simulation for ${simulation.companyName}?`);
       const dialogRef = this.dialog.open(ConfirmDialogComponent, {
         maxWidth: "400px",
         data: dialogData
@@ -242,7 +242,7 @@ export class SimulationComponent implements OnInit {
     const companyCount = (this.companies && this.companies.length) ? this.companies.length : 0;
     if (companyCount == 0) {
       let message = `No company found, 
-      Please create company first by clicking on Manage Company.`
+      please create a company first by clicking on Manage Company.`
       this.showAlertMessage(message)
     } else {
       let diabledCount = 0;

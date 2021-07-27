@@ -16,7 +16,7 @@ exports.register = async function (req, res) {
         const body = req.body;
         const [registerUser] = await User.findUser(body.businessEmail);
         if (registerUser && registerUser.userId) {
-            return res.status(409).json({ success: false, message: 'Registration failed, Email already exists!' });
+            return res.status(409).json({ success: false, message: 'Registration failed, email already exists!' });
         }
         const salt = await bcrypt.genSalt(10);
         const password = await bcrypt.hash(body.password, salt);
@@ -64,7 +64,7 @@ exports.login = async function (req, res) {
         }
     } catch (error) {
         logService.writeLog('user.controller.login', error);
-        return res.status(500).json({ success: false, message: 'Something went wrong, Error while authenticating user!' });
+        return res.status(500).json({ success: false, message: 'Something went wrong, error while authenticating user!' });
     }
 };
 
@@ -134,6 +134,6 @@ exports.changePassword = async function (req, res) {
         }
     } catch (error) {
         logService.writeLog('user.controller.changePassword', error);
-        return res.status(500).json({ success: false, message: 'Something went wrong, error while attempting to the change password.' });
+        return res.status(500).json({ success: false, message: 'Something went wrong, error while attempting to change the password.' });
     }
 }

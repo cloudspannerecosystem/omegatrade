@@ -39,7 +39,7 @@ exports.updateSimulation = async function (req, res) {
         }
     } catch (error) {
         logService.writeLog('simulation.controller.updateSimulation', error);
-        return res.status(500).json({ success: false, "message": "something went wrong while updating simulation." });
+        return res.status(500).json({ success: false, "message": "Something went wrong while updating simulation." });
     }
 }
 
@@ -120,7 +120,7 @@ exports.startSimulation = async function (req, res) {
             }, interval);
             return res.status(200).json({ success: true, sId: sId, message: "Simulation started." });
         } else {
-            return res.status(422).json({ success: false, message: "Simulation failed, please check the data." });
+            return res.status(422).json({ success: false, message: "Simulation failed, please check that the data you entered are valid." });
         }
     } catch (error) {
         logService.writeLog('simulation.controller.startSimulation', error);
