@@ -33,8 +33,8 @@ Via gcloud commands
 gcloud components update 
 gcloud emulators spanner start 
 ```
-
-Let’s create a configuration for the emulator. This is a one-time setup and can be reused subsequently. Run the following commands:
+The following commands will create configuration for the emulator, This is a one-time setup and can be reused subsequently.
+Open a new terminal and run the following commands
 
 ```
 gcloud config configurations create emulator
@@ -43,19 +43,19 @@ gcloud config set project test-project
 gcloud config set api_endpoint_overrides/spanner http://localhost:9020/
 ```
 
-Once created, you can activate the emulator configuration by using the following command:
+On successfull run of the above commands, activate the emulator configuration by using the following
 
 ```
 gcloud config configurations activate emulator
 ```
 
-Verify that the emulator configuration is set correctly
+Validate your emulator is configured correctly
 
 ```
 gcloud config list
 ```
 
-Let’s create an instance, database and some tables on the local emulator. 
+Let’s create an instance, database and tables on the local emulator. 
 
 #### Create an instance in the emulator 
 
@@ -79,7 +79,7 @@ gcloud spanner databases ddl update omegatrade-db --instance omegatrade-instance
 gcloud spanner databases ddl update omegatrade-db --instance omegatrade-instance --ddl "CREATE TABLE simulations (sId STRING(36) NOT NULL, companyId STRING(36) NOT NULL, status STRING(36), createdAt TIMESTAMP NOT NULL OPTIONS (allow_commit_timestamp=true), CONSTRAINT FK_CompanySimulation FOREIGN KEY (companyId) REFERENCES companies (companyId)) PRIMARY KEY(sId);"
 ```
 
-Verify if these tables were successfully created by querying **INFORMATION_SCHEMA** in the emulator instance.
+Run the following command on emulator instance to check the table creation.
 
 ```
 gcloud spanner databases execute-sql omegatrade-db  --instance=omegatrade-instance  --sql='SELECT * FROM information_schema.tables WHERE table_schema <> "INFORMATION_SCHEMA"'
@@ -87,7 +87,7 @@ gcloud spanner databases execute-sql omegatrade-db  --instance=omegatrade-instan
 
 ## 2. Set up the Backend
 
-Now that the emulator is up and running, let’s clone this repo and run the backend service of OmegaTrade with the emulator. 
+Now, the emulator is up and running, let’s clone this repo and run the backend service of OmegaTrade with the emulator. 
 
 ```
 git clone https://github.com/cloudspannerecosystem/omegatrade.git
@@ -125,14 +125,14 @@ The above command will run the Backend service in `http://localhost:3000`
 
 ## 3. Seed Sample Data
 
-Open a new terminal tab and go back to the `backend` folder. Run the below commands:
+Open a new terminal and go back to the `backend` folder. Run the below commands:
 
 ```
 export SPANNER_EMULATOR_HOST="localhost:9010"
 node seed-data.js 
 ```
 The above command will migrate sample data into the connected database.
-Once this is successful, you will get a `Data Loaded successfully` message.
+On successful run, you will get a `Data Loaded successfully` message.
 
 Note: You may run this migration only on an empty database, to avoid duplication.
 
@@ -190,7 +190,7 @@ Google OAuth enables you to sign in with your Google account directly from the a
 
 #### Modifying OAuth Consent Screen application.
 
-The following steps are required only if you want to modify the existing application to Omega Trade application.
+The following steps are required only if you want to modify the name of existing application to OmegaTrade.
 
 1. Go to the [OAuth consent screen](https://console.cloud.google.com/apis/credentials/consent).
 2. Click on the Edit App button. 
@@ -204,7 +204,7 @@ The following steps are required only if you want to modify the existing applica
 
 #### Creating Google OAuth credentials
 
-The following steps will guide you to create Oauth Credentials for the registered application.
+The following steps will guide you to create OAuth Credentials for the registered application.
 
 1. Go to the [Google API Console Credentials](https://console.developers.google.com/apis/credentials). Click on Create Credentials and choose OAuth client ID. 
 
@@ -232,6 +232,6 @@ export const environment = {
 };
 ```
 
-NOTE: The official Oauth setup guide can also be found [here](https://support.google.com/cloud/answer/6158849?hl=en#zippy=).
+NOTE: The official OAuth setup guide can also be found [here](https://support.google.com/cloud/answer/6158849?hl=en#zippy=).
 
 Now Angular will automatically detect your changes and serve the app in `http://localhost:4200` URL.
