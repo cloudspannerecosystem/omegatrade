@@ -20,8 +20,8 @@
     <mat-card>
       <form class="simulation-form" [formGroup]="simulateForm" #formDirective="ngForm"  (submit)="simulate(formDirective)">
         <div class="row">
-          <div class="col-3 " (click)="checkCompany()">
-            <mat-form-field appearance="standard">
+          <div class="col-3 ">
+            <mat-form-field appearance="standard" (click)="checkCompany()">
               <mat-label>Select Company</mat-label>
               <mat-select #mySelect formControlName="companyId" id="companyId">
                 <mat-option *ngFor="let company of companies" [disabled]="company.disable"
@@ -32,7 +32,7 @@
           <div class="col-3 ">
             <mat-form-field appearance="standard">
               <mat-label>Select Interval</mat-label>
-              <mat-select formControlName="timeInterval" id="timeInterval">
+              <mat-select formControlName="timeInterval" id="timeInterval" [disabled]="!simulateForm.get('companyId').value">
                 <mat-option *ngFor="let time of interval" [value]="time">{{ time }}</mat-option>
               </mat-select>
               <mat-hint>In seconds</mat-hint>
@@ -41,14 +41,14 @@
           <div class="col-3 ">
             <mat-form-field appearance="standard">
               <mat-label>Number of Records</mat-label>
-              <mat-select formControlName="data" id="data">
+              <mat-select formControlName="data" id="data" [disabled]="!simulateForm.get('companyId').value">
                 <mat-option *ngFor="let record of noOfRecords" [value]="record">{{ record }}</mat-option>
               </mat-select>
             </mat-form-field>
           </div>
           <div class="col-1 mat-actions ">
             <button type="submit" class="start-simulate-btn" matTooltip="Start Simulation" mat-stroked-button
-              [disabled]="!simulateForm.valid">Simulate</button>
+              [disabled]="!simulateForm.get('companyId').value || !simulateForm.get('timeInterval').value || !simulateForm.get('data').value">Simulate</button>
           </div>
 
         </div>

@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./simulation.component.css']
 })
 
-export class SimulationComponent implements OnInit {
+export class SimulationComponent implements OnInit  {
 
   displayedColumns: string[] = ['companyName', 'companyShortCode', 'status', 'action'];
   dataSource: MatTableDataSource<SimuationData>;
@@ -34,22 +34,22 @@ export class SimulationComponent implements OnInit {
   loader: boolean = false;
   runningSimulation = 0;
   maxAllowedSimulation = 3;
-
+  
   constructor(private snackBarService: SnackBarService, private restService: RestService, private formBuilder: FormBuilder, public dialog: MatDialog, private router: Router) {
   }
 
   /**
    *  Function to Initiate component.
-   */ 
+   */
   ngOnInit(): void {
     this.getCompanies();
     this.simulateForm = this.formBuilder.group({
-      companyId: ['', [Validators.required]],
-      timeInterval: ['', [Validators.required]],
-      data: ['', [Validators.required]],
-    });
+      companyId: ['', []],
+      timeInterval: ['', []],
+      data: ['', []],
+    },);
   }
-
+  
   /**
    * Initalize and upates simulation table sort and pagination.
    */
@@ -57,7 +57,7 @@ export class SimulationComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
-  
+
   /**
    *  Function to get companies lists,
    *  and call simulation lists.
@@ -84,7 +84,7 @@ export class SimulationComponent implements OnInit {
    * @param simulation contains company's simulation.
    */
   deleteSimulation(simulation) {
-    if(simulation && simulation.sId && simulation.companyName){
+    if (simulation && simulation.sId && simulation.companyName) {
       const dialogData = new ConfirmDialogModel("Confirm Action", `Are you sure you want to delete the simulation for ${simulation.companyName}?`);
       const dialogRef = this.dialog.open(ConfirmDialogComponent, {
         maxWidth: "400px",
@@ -102,7 +102,7 @@ export class SimulationComponent implements OnInit {
                   if (index > -1) {
                     this.dataSource.data.splice(index, 1)
                     this.dataSource = new MatTableDataSource(this.dataSource.data);
-                    if(simulation.status != "COMPLETED"){
+                    if (simulation.status != "COMPLETED") {
                       --this.runningSimulation;
                     }
                     this.initializeSortAndPagination();
@@ -127,29 +127,33 @@ export class SimulationComponent implements OnInit {
    *  
    */
   simulate(formDirective: FormGroupDirective) {
-    if(this.runningSimulation >= this.maxAllowedSimulation){
+    if (this.runningSimulation >= this.maxAllowedSimulation) {
       this.snackBarService.openSnackBar(`Cannot simulate more than ${this.maxAllowedSimulation} simulations simultaneously`, '');
       return false;
     }
-    this.loader = true;
-    this.restService.postData('simulations/start', this.simulateForm.value)
-      .pipe(take(1))
-      .subscribe(
-        response => {
-          if (response && response.success) {
-            this.updateCompanyStatus(this.simulateForm.get('companyId').value, true);
-            this.simulateForm.reset();
-            formDirective.resetForm();
-            this.getSimulations();
-          }
-          this.loader = false;
-        },
-        error => {
-          if (error && error.error && error.error.message) {
-            this.snackBarService.openSnackBar(error.error.message, '');
-          }
-          this.loader = false;
-        });
+    if (this.simulateForm.get('companyId').value && this.simulateForm.get('timeInterval').value && this.simulateForm.get('data').value) {
+      this.loader = true;
+      this.restService.postData('simulations/start', this.simulateForm.value)
+        .pipe(take(1))
+        .subscribe(
+          response => {
+            if (response && response.success) {
+              this.updateCompanyStatus(this.simulateForm.get('companyId').value, true);
+              this.simulateForm.reset();
+              formDirective.resetForm();
+              this.getSimulations();
+            }
+            this.loader = false;
+          },
+          error => {
+            if (error && error.error && error.error.message) {
+              this.snackBarService.openSnackBar(error.error.message, '');
+            }
+            this.loader = false;
+          });
+    } else {
+      this.snackBarService.openSnackBar(`please choose all required form fields to simulate.`, '');
+    }
   }
 
   /**
@@ -169,7 +173,7 @@ export class SimulationComponent implements OnInit {
             this.runningSimulation = 0;
             if (response.data && response.data.length > 0) {
               for (var i = 0; i < response.data.length; i++) {
-                if(response.data[i]['status'] != 'COMPLETED'){
+                if (response.data[i]['status'] != 'COMPLETED') {
                   ++this.runningSimulation;
                 }
                 this.updateCompanyStatus(response.data[i].companyId, true)
@@ -186,14 +190,14 @@ export class SimulationComponent implements OnInit {
         });
   }
 
- /**
-  * Function to update simulation.
-  * @param sId {string} unique simulation id
-  * @param status  using three types of simulation status.
-  * PROCESSING - simulation is running.
-  * COMPLETED - simulation completed for particular company.
-  */
-  updateSimulation(sId,companyId,status) {
+  /**
+   * Function to update simulation.
+   * @param sId {string} unique simulation id
+   * @param status  using three types of simulation status.
+   * PROCESSING - simulation is running.
+   * COMPLETED - simulation completed for particular company.
+   */
+  updateSimulation(sId, companyId, status) {
     this.loader = true;
     const payLoad = { sId: sId, companyId: companyId, status: status }
     this.restService.putData(`simulations/update`, payLoad)
