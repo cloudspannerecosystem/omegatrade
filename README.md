@@ -107,12 +107,6 @@ Install dependencies in the `backend` folder
 ```
 npm install 
 ```
-Create logs folder and assign permissions (if not already exists)
-
-```
-mkdir logs  
-sudo chmod 777 logs  
-```
 
 Create .env file in the `backend` folder (if not already exists) and ensure the **Project ID**, **Instance** and **Database** name match the ones we created above. 
 
