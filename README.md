@@ -5,7 +5,7 @@ This project was built using [Angular CLI](https://github.com/angular/angular-cl
 
 ## Dependencies
 * Install [Node](https://nodejs.org/en/download/) version >= 10.16 and [NPM](https://nodejs.org/en/download/) version >= 6.9
-* Cloud Spanner - [Emulator](https://cloud.google.com/spanner/docs/emulator)
+* Cloud Spanner - [emulator](https://cloud.google.com/spanner/docs/emulator)
   * The emulator is included in the [Google Cloud SDK](https://cloud.google.com/sdk)
 and can be invoked via the [gcloud emulators spanner](https://cloud.google.com/sdk/gcloud/reference/emulators/spanner) commands. 
   * Please [install](https://cloud.google.com/sdk/docs/install) Cloud SDK before proceeding further, if you haven't already. 
@@ -16,12 +16,12 @@ and can be invoked via the [gcloud emulators spanner](https://cloud.google.com/s
 
 The following steps will guide you to run the OmegaTrade application locally.
 
-1. Set up the Cloud Spanner Emulator and create the Instance, Database and Schema in the emulator.
-2. Set up the Backend service and connect it to the Emulator. 
-3. Seed sample data in the OmegaTrade app
+1. Set up the Cloud Spanner emulator and create the instance, database and schema in the emulator.
+2. Set up the Backend service and connect it to the emulator. 
+3. Seed sample data in the OmegaTrade app.
 4. Set up the Frontend service and configure the API base URL.
-5. Run the Application.
-6. (Optional) Configure Google OAuth in frontend to enable sign in with your Google account.
+5. Run the OmegaTrade app.
+6. (Optional) Configure Google OAuth in frontend to enable sign-in with your Google account.
 
 ## 1. Emulator Setup
 
@@ -33,7 +33,7 @@ Via gcloud commands
 gcloud components update 
 gcloud emulators spanner start 
 ```
-The following commands will create configuration for the emulator, This is a one-time setup and can be reused subsequently.
+The following commands will create a configuration for the emulator. This is a one-time setup and can be reused subsequently.
 Open a new terminal and run the following commands
 
 ```
@@ -43,7 +43,7 @@ gcloud config set project test-project
 gcloud config set api_endpoint_overrides/spanner http://localhost:9020/
 ```
 
-On successful run of the above commands, activate the emulator configuration by using the following
+Upon running above commands successfully, activate the emulator configuration
 
 ```
 gcloud config configurations activate emulator
@@ -95,7 +95,7 @@ gcloud spanner databases execute-sql omegatrade-db  --instance=omegatrade-instan
 
 ## 2. Set up the Backend
 
-Now, the emulator is up and running, let’s clone this repo and run the backend service of OmegaTrade with the emulator. 
+Now, the emulator is up and running. Let’s clone this repo and run the backend service of OmegaTrade with the emulator. 
 
 ```
 git clone https://github.com/cloudspannerecosystem/omegatrade.git
@@ -134,7 +134,7 @@ export SPANNER_EMULATOR_HOST="localhost:9010"
 node seed-data.js 
 ```
 The above command will migrate sample data into the connected database.
-On successful run, you will get a `Data Loaded successfully` message.
+If the seeding was successful, you will get a `Data Loaded successfully` message.
 
 Note: You may run this migration only on an empty database, to avoid duplication.
 
