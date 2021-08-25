@@ -234,6 +234,7 @@ export const environment = {
 };
 ```
 
-NOTE: The official OAuth setup guide can also be found [here](https://support.google.com/cloud/answer/6158849?hl=en#zippy=).
+NOTE: Please ensure that cookies are enabled in your browser to avoid being blocked from running the app. The official OAuth setup guide can also be found [here](https://support.google.com/cloud/answer/6158849?hl=en#zippy=).
+
 
 Now Angular will automatically detect your changes and serve the app in `http://localhost:4200` URL.
