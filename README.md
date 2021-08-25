@@ -43,7 +43,7 @@ gcloud config set project test-project
 gcloud config set api_endpoint_overrides/spanner http://localhost:9020/
 ```
 
-On successfull run of the above commands, activate the emulator configuration by using the following
+On successful run of the above commands, activate the emulator configuration by using the following
 
 ```
 gcloud config configurations activate emulator
