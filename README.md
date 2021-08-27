@@ -181,7 +181,7 @@ Google OAuth enables you to sign in with your Google account directly from the a
 #### Creating Omega Trade application in the OAuth Consent screen for the first time.
 
 1. Go to the [OAuth consent screen](https://console.cloud.google.com/apis/credentials/consent).
-2. Choose the user type as Internal and click create.
+2. Choose the user type as either Internal or External and click create.
 3. Add your application name (i.e OmegaTrade) in the App name field.
 4. Choose your email in the User support email section.
 5. Add your email in developer contact information.  
