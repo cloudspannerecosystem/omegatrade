@@ -21,6 +21,7 @@ The following steps will guide you to run the OmegaTrade application locally.
 3. Seed sample data in the OmegaTrade app.
 4. Set up the Frontend service and configure the API base URL.
 5. Run the OmegaTrade app.
+6. (Optional) Configure Google OAuth in frontend to enable sign-in with your Google account.
 
 ## 1. Emulator Setup
 
@@ -172,3 +173,68 @@ export const environment = {
 Go back to the frontend folder.
 
 Run `npm start` in the `frontend` folder. This command will serve the whole application and it will start running in the URL `http://localhost:4200`. 
+
+## 6. (Optional) Configure Google OAuth in Frontend
+
+Google OAuth enables you to sign in with your Google account directly from the application. Here are the steps you need to follow in order to use this service.
+
+#### Creating Omega Trade application in the OAuth Consent screen for the first time.
+
+1. Go to the [OAuth consent screen](https://console.cloud.google.com/apis/credentials/consent).
+2. Choose the user type as Internal and click create.
+3. Add your application name (i.e OmegaTrade) in the App name field.
+4. Choose your email in the User support email section.
+5. Add your email in developer contact information.  
+6. Add your organization's app domain and authorized domain, if you do not have both you can skip this step.
+7. Click save and continue.
+8. Add Scopes if you want and continue with next steps.
+9. Save your changes.
+
+#### Modifying OAuth Consent Screen application.
+
+The following steps are required only if you want to modify the name of existing application to OmegaTrade.
+
+1. Go to the [OAuth consent screen](https://console.cloud.google.com/apis/credentials/consent).
+2. Click on the Edit App button. 
+3. Replace the existing application name with "OmegaTrade" in the App name field.
+4. Choose your email in the User support email section.
+5. Add your email in developer contact information.
+6. Add your organization's app domain and authorized domain, if you do not have both you can skip this step.
+7. Click save and continue. 
+8. Add Scopes if you want and continue with the following steps.
+9. Save your changes.
+
+#### Creating Google OAuth credentials
+
+The following steps will guide you to create OAuth Credentials for the registered application.
+
+1. Go to the [Google API Console Credentials](https://console.developers.google.com/apis/credentials). Click on Create Credentials and choose OAuth client ID. 
+
+2. Choose Web Application in the application type and enter the name of your choice.    
+
+3. Add frontend URL i.e. `http://localhost:4200` (from step 5) in Authorized JavaScript origins **ADD URI** section and click on create button. Copy your client id from the popup window.
+
+4. Now we need to update the Client ID in the `environment.ts` file of frontend folder.
+
+```
+cd src/environments
+vi environment.ts
+```
+
+Update the **clientId** as below.
+
+```
+export const environment = {
+  production: false,
+  name: "dev",
+  // change baseUrl according to backend URL
+  baseUrl: "http://localhost:3000/api/v1/", 
+  // change clientId to actual value you have received from Oauth console 
+  clientId: "142706365772-ol2a8hcqs1d3rrgjgvxxxxxxxxdqpog8.apps.googleusercontent.com"
+};
+```
+
+NOTE: Please ensure that cookies are enabled in your browser to avoid being blocked from running the app. The official OAuth setup guide can also be found [here](https://support.google.com/cloud/answer/6158849?hl=en#zippy=).
+
+
+Now Angular will automatically detect your changes and serve the app in `http://localhost:4200` URL.
